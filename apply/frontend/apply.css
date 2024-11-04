@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #f8f8f9, #f8f6f6); /* 부드러운 그라데이션 */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em; /* 제목 크기 증가 */
+}
+
+.form-group {
+    margin-bottom: 25px; /* 간격 증가 */
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 계산 */
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 5px rgba(255, 110, 97, 0.5); /* 포커스 시 그림자 효과 */
+    outline: none;
+}
+
+textarea {
+    height: 100px; /* 고정된 높이 설정 */
+    resize: none; /* 크기 조절 비활성화 */
+}
+
+button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ff5a4d;
+    transform: scale(1.05);
+}
+
+/* 버튼 크기 통일 */
+button,
+input[type="submit"] {
+    width: 100%; /* 버튼의 가로 폭 100% */
+}
+
+/* 체크박스 및 라디오 버튼 스타일 */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-label {
+    margin-left: 5px;
+}
