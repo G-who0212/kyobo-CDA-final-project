@@ -1,0 +1,1 @@
+THIS IS apply Directory for apply Micro Service
