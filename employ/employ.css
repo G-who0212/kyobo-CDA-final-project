@@ -1,0 +1,26 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* 부드러운 배경색 */
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ced4da;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff; /* 헤더 배경색 */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* 짝수 행 배경색 */
+}

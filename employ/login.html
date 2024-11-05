@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="logincss.css">
+</head>
+<body>
+    <div class="container">
+        <form id="login-form" class="login-form">
+            <h1>로그인</h1>
+            <div class="input-group">
+                <select id="company" name="company" required>
+                    <option value="" disabled selected>회사</option>
+                    <option value="kyoboDTS">교보DTS</option>
+                    <option value="samsung">삼성</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="text" id="email" name="email" placeholder="이메일" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="비밀번호" required>
+            </div>
+            <button type="submit">로그인</button>
+            <p class="signup">계정이 없으신가요? <a href="#">회원가입</a></p>
+        </form>
+    </div>
+
+    <script>
+        // CSRF 토큰 가져오는 함수
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // 확인할 쿠키 찾기
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        };
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 제출 이벤트 방지
+
+            // 각 필드의 값을 가져와 JSON 객체 생성
+            const formData = {
+                company: document.getElementById('company').value,
+                username: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+            };
+
+            // Fetch API를 사용하여 POST 요청 보내기
+            fetch('/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'), // CSRF 토큰 추가
+                },
+                body: JSON.stringify(formData) // JSON 형태로 변환된 데이터
+            })
+            .then(response => response.json())
+            .then(data => {
+            if (data.accessToken && data.refreshToken) {
+                // JWT 액세스 토큰과 리프레시 토큰을 로컬 스토리지에 저장
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('refreshToken', data.refreshToken);
+                window.location.href = "/api/applicant";  // 로그인 후 이동할 페이지로 리다이렉트
+             } else {
+                alert('로그인 실패');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+        });
+    </script>
+</body>
+</html>

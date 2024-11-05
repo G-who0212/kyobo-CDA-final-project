@@ -26,26 +26,6 @@ h1 {
     text-align: left;
 }
 
-.form-group label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* 항목 간 간격 조정 */
-}
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.checkbox-label {
-    margin-left: 5px;
-    font-size: 16px;
-}
-.checkbox-group input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
 label {
     display: block;
     margin-bottom: 10px;

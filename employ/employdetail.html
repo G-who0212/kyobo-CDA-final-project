@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교보 DTS 지원</title>
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+    <div class="container">
+        <h1>교보 DTS 참가 신청서</h1>
+        <form id="survey-form">
+            <div class="form-group">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" value="{{ applicant.name }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="ssn">주민번호 앞자리:</label>
+                <input type="text" id="date_of_birth" name="date_of_birth" value="{{ applicant.date_of_birth }}"disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="phone_num">휴대전화:</label>
+                <input type="tel" id="phone_num" name="phone_num" value="{{ applicant.phone_num }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ applicant.email }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="residence">거주지:</label>
+                <input type="text" id="residence" name="residence" value="{{ applicant.residence }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>학력사항:</label>
+                <input type="text" value="{{ applicant.educational_background}}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="school">학교:</label>
+                <input type="text" id="school" name="school" value="{{ applicant.school }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="major">전공학과:</label>
+                <input type="text" id="major" name="major" value="{{ applicant.major }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="certificate">IT/클라우드 관련 공인 자격증:</label>
+                <input type="text" id="certificate" name="certificate" value="{{ applicant.certificate}}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="it_experience">IT관련 대회/공모전/대외활동 경험:</label>
+                <textarea name="it_experience" id="it_experience" rows="4" value="{{ applicant.it_experience }}" disabled ></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="source_of_info" name="source_of_info" value="{{ applicant.education_experience}}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>IT관련 업무 경험:</label>
+                <input type="text" id="source_of_info" name="source_of_info" value="{{ applicant.it_career_experience}}" disabled>
+                
+            </div>
+
+            <div class="form-group">
+                <label>내일배움카드 소지 여부:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="card_possession-has" name="card_possession" value="has" {% if applicant.card_possession == 'has' %} checked {% endif %}   onclick="handleCheckbox(this)">
+                    <label class="checkbox-label" for="learning-card-has">내일배움카드가 있습니다.</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="card_possession-will-issue" name="card_possession" value="will-issue" {% if applicant.card_possession == 'will-issue' %} checked {% endif %}    onclick="handleCheckbox(this)">
+                    <label class="checkbox-label" for="learning-card-will-issue">내일배움카드를 발급 받을 예정입니다.</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="motivation_career_plan">지원동기 및 진로계획 (최소 50자 이상 작성):</label>
+                <textarea name="motivation_career_plan" id="motivation_career_plan" rows="4" value="{{ applicant.motivation_career_plan }}"  disabled></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="source_of_info">신청경로:</label>
+                <input type="text" id="source_of_info" name="source_of_info" value="{{ applicant.source_of_info }}" disabled>
+            </div>
+            
+            <button type="submit">제출</button>
+        </form>
+    </div>
+
+    <script>
+
+        window.onload = function() {
+        var cardPossessionHas = document.getElementById('card_possession-has');
+        var cardPossessionWillIssue = document.getElementById('card_possession-will-issue');
+        var hasCardGroup = document.getElementById('has-card');
+        var willIssueCardGroup = document.getElementById('will-issue-card');
+
+        if (cardPossessionHas.checked) {
+            willIssueCardGroup.style.display = 'none';
+        } else if (cardPossessionWillIssue.checked) {
+            hasCardGroup.style.display = 'none';
+        }
+    };
+
+
+
+        function handleCheckbox(checkbox) {
+            const checkboxes = document.querySelectorAll('input[name="card_possession"]');
+            checkboxes.forEach((cb) => {
+                if (cb !== checkbox) {
+                    cb.checked = false;
+                }
+            });
+        };
+
+       
+    document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // 기본 제출 방지
+
+    });
+
+
+    // CSRF 토큰을 가져오는 함수
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // CSRF 토큰을 찾습니다
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    };
+</script>
+</body>
+</html>

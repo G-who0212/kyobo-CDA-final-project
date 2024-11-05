@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교보 DTS 지원</title>
     <link rel="stylesheet" href="apply.css">
-    <style>
-        .form-group label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px; /* 항목 간 간격 조정 */
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .checkbox-label {
-            margin-left: 5px;
-            font-size: 16px;
-        }
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -38,12 +17,12 @@
 
             <div class="form-group">
                 <label for="ssn">주민번호 앞자리:</label>
-                <input type="text" id="ssn" name="ssn" required>
+                <input type="text" id="date_of_birth" name="date_of_birth" required>
             </div>
 
             <div class="form-group">
-                <label for="phone">휴대전화:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="phone_num">휴대전화:</label>
+                <input type="tel" id="phone_num" name="phone_num" required>
             </div>
 
             <div class="form-group">
@@ -52,13 +31,13 @@
             </div>
 
             <div class="form-group">
-                <label for="address">거주지:</label>
-                <input type="text" id="address" name="address" required>
+                <label for="residence">거주지:</label>
+                <input type="text" id="residence" name="residence" required>
             </div>
 
             <div class="form-group">
                 <label>학력사항:</label>
-                <select name="education" id="education" required>
+                <select name="educational_background" id="educational_background" required>
                     <option value="high-school">고등학교 졸업</option>
                     <option value="associate-degree">전문학사</option>
                     <option value="university-in-progress-credits">대학 재학(졸업학점 이수 O)</option>
@@ -79,18 +58,18 @@
             </div>
 
             <div class="form-group">
-                <label for="certifications">IT/클라우드 관련 공인 자격증:</label>
-                <input type="text" id="certifications" name="certifications">
+                <label for="certificate">IT/클라우드 관련 공인 자격증:</label>
+                <input type="text" id="certificate" name="certificate">
             </div>
 
             <div class="form-group">
-                <label for="experience">IT관련 대회/공모전/대외활동 경험:</label>
-                <textarea name="experience" id="experience" rows="4" required></textarea>
+                <label for="it_experience">IT관련 대회/공모전/대외활동 경험:</label>
+                <textarea name="it_experience" id="it_experience" rows="4" required></textarea>
             </div>
 
             <div class="form-group">
                 <label>유사교육 수료 경험:</label>
-                <select name="similar-education" id="similar-education" onchange="toggleOtherEducationInput();">
+                <select name="education_experience" id="education_experience" onchange="toggleOtherEducationInput();">
                     <option value="none">해당없음</option>
                     <option value="less-than-one-month">1개월 미만</option>
                     <option value="one-to-three-months">1개월 이상 ~ 3개월 미만</option>
@@ -102,7 +81,7 @@
 
             <div class="form-group">
                 <label>IT관련 업무 경험:</label>
-                <select name="work-experience" id="work-experience" onchange="toggleCompanyInput();">
+                <select name="it_career_experience" id="it_career_experience" onchange="toggleCompanyInput();">
                     <option value="none">해당없음</option>
                     <option value="less-than-six-months">6개월 미만</option>
                     <option value="six-months-to-one-year">6개월 ~ 1년</option>
@@ -116,23 +95,23 @@
             <div class="form-group">
                 <label>내일배움카드 소지 여부:</label>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="learning-card-has" name="learning-card" value="has" onclick="handleCheckbox(this)">
+                    <input type="checkbox" id="card_possession-has" name="card_possession" value="has" onclick="handleCheckbox(this)">
                     <label class="checkbox-label" for="learning-card-has">내일배움카드가 있습니다.</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="learning-card-will-issue" name="learning-card" value="will-issue" onclick="handleCheckbox(this)">
+                    <input type="checkbox" id="card_possession-will-issue" name="card_possession" value="will-issue" onclick="handleCheckbox(this)">
                     <label class="checkbox-label" for="learning-card-will-issue">내일배움카드를 발급 받을 예정입니다.</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="motivation">지원동기 및 진로계획 (최소 50자 이상 작성):</label>
-                <textarea name="motivation" id="motivation" rows="4" required></textarea>
+                <label for="motivation_career_plan">지원동기 및 진로계획 (최소 50자 이상 작성):</label>
+                <textarea name="motivation_career_plan" id="motivation_career_plan" rows="4" required></textarea>
             </div>
 
             <div class="form-group">
-                <label for="application-source">신청경로:</label>
-                <select name="application-source" id="application-source" onchange="toggleOtherInput();">
+                <label for="source_of_info">신청경로:</label>
+                <select name="source_of_info" id="source_of_info" onchange="toggleOtherInput();">
                     <option value="naver-search">네이버 검색</option>
                     <option value="google-search">구글 검색</option>
                     <option value="naver-banner">네이버 배너 광고</option>
@@ -158,7 +137,7 @@
 
     <script>
         function handleCheckbox(checkbox) {
-            const checkboxes = document.querySelectorAll('input[name="learning-card"]');
+            const checkboxes = document.querySelectorAll('input[name="card_possession"]');
             checkboxes.forEach((cb) => {
                 if (cb !== checkbox) {
                     cb.checked = false;
@@ -167,22 +146,85 @@
         }
 
         function toggleOtherInput() {
-            const applicationSource = document.getElementById('application-source');
+            const applicationSource = document.getElementById('source_of_info');
             const otherInput = document.getElementById('other-input');
             otherInput.style.display = applicationSource.value === 'other' ? 'block' : 'none';
         }
 
         function toggleOtherEducationInput() {
-            const similarEducation = document.getElementById('similar-education');
+            const similarEducation = document.getElementById('education_experience');
             const otherEducationInput = document.getElementById('other-education-input');
             otherEducationInput.style.display = similarEducation.value === 'other' ? 'block' : 'none';
         }
 
         function toggleCompanyInput() {
-            const workExperience = document.getElementById('work-experience');
+            const workExperience = document.getElementById('it_career_experience');
             const companyInput = document.getElementById('company-name');
             companyInput.style.display = workExperience.value !== 'none' ? 'block' : 'none';
         }
-    </script>
+        document.getElementById('survey-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // 기본 제출 방지
+
+    const formData = {
+        applying_to: "교보 DTS Cloud Architecture DX Academy",
+        name: document.getElementById('name').value,
+        date_of_birth: document.getElementById('date_of_birth').value,
+        phone_num: document.getElementById('phone_num').value,
+        email: document.getElementById('email').value,
+        residence: document.getElementById('residence').value,
+        educational_background: document.getElementById('educational_background').value,
+        school: document.getElementById('school').value,
+        major: document.getElementById('major').value,
+        certificate: document.getElementById('certificate').value,
+        it_experience: document.getElementById('it_experience').value,
+        education_experience: document.getElementById('education_experience').value,
+        it_career_experience: document.getElementById('it_career_experience').value,
+        card_possession: document.querySelector('input[name="card_possession"]:checked') ? 
+                        document.querySelector('input[name="card_possession"]:checked').value : null,
+        motivation_career_plan: document.getElementById('motivation_career_plan').value,
+        source_of_info: document.getElementById('source_of_info').value,
+    };
+
+    fetch('/api/application/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'), // CSRF 토큰 추가
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // 추가 작업 (예: 성공 메시지 표시)
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // 오류 처리
+    });
+});
+
+    // CSRF 토큰을 가져오는 함수
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // CSRF 토큰을 찾습니다
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    };
+</script>
 </body>
 </html>
