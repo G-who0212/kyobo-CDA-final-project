@@ -1,6 +1,7 @@
 from django.db import models
 
 class Application(models.Model):
+    applying_to = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     date_of_birth = models.CharField(max_length=6)  # '990212' format
     phone_num = models.CharField(max_length=15)

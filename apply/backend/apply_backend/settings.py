@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'application_form',
     'rest_framework',
 ]
 
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'apply_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'easycruit',
+        'USER': 'hoo',
+        'PASSWORD': '1254410',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
