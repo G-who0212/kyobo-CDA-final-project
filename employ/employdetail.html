@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="ssn">주민번호 앞자리:</label>
-                <input type="text" id="date_of_birth" name="date_of_birth" value="{{ applicant.date_of_birth }}"disabled>
+                <input type="text" id="date_of_birth" name="date_of_birth" value="{{ applicant.date_of_birth }}" disabled>
             </div>
 
             <div class="form-group">
@@ -37,7 +37,7 @@
 
             <div class="form-group">
                 <label>학력사항:</label>
-                <input type="text" value="{{ applicant.educational_background}}" disabled>
+                <input type="text" value="{{ applicant.educational_background }}" disabled>
             </div>
 
             <div class="form-group">
@@ -52,39 +52,39 @@
 
             <div class="form-group">
                 <label for="certificate">IT/클라우드 관련 공인 자격증:</label>
-                <input type="text" id="certificate" name="certificate" value="{{ applicant.certificate}}" disabled>
+                <input type="text" id="certificate" name="certificate" value="{{ applicant.certificate }}" disabled>
             </div>
 
             <div class="form-group">
                 <label for="it_experience">IT관련 대회/공모전/대외활동 경험:</label>
-                <textarea name="it_experience" id="it_experience" rows="4" value="{{ applicant.it_experience }}" disabled ></textarea>
+                <textarea name="it_experience" id="it_experience" rows="4" disabled>{{ applicant.it_experience }}</textarea>
             </div>
 
             <div class="form-group">
-                <input type="text" id="source_of_info" name="source_of_info" value="{{ applicant.education_experience}}" disabled>
+                <label>유사교육 수료 경험:</label>
+                <input type="text" id="education_experience" name="education_experience" value="{{ applicant.education_experience }}" disabled>
             </div>
 
             <div class="form-group">
                 <label>IT관련 업무 경험:</label>
-                <input type="text" id="source_of_info" name="source_of_info" value="{{ applicant.it_career_experience}}" disabled>
-                
+                <input type="text" id="it_career_experience" name="it_career_experience" value="{{ applicant.it_career_experience }}" disabled>
             </div>
 
             <div class="form-group">
                 <label>내일배움카드 소지 여부:</label>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="card_possession-has" name="card_possession" value="has" {% if applicant.card_possession == 'has' %} checked {% endif %}   onclick="handleCheckbox(this)">
-                    <label class="checkbox-label" for="learning-card-has">내일배움카드가 있습니다.</label>
+                    <input type="checkbox" id="card_possession-has" name="card_possession" value="has" onclick="handleCheckbox(this)">
+                    <label class="checkbox-label" for="card_possession-has">내일배움카드가 있습니다.</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="card_possession-will-issue" name="card_possession" value="will-issue" {% if applicant.card_possession == 'will-issue' %} checked {% endif %}    onclick="handleCheckbox(this)">
-                    <label class="checkbox-label" for="learning-card-will-issue">내일배움카드를 발급 받을 예정입니다.</label>
+                    <input type="checkbox" id="card_possession-will-issue" name="card_possession" value="will-issue" onclick="handleCheckbox(this)">
+                    <label class="checkbox-label" for="card_possession-will-issue">내일배움카드를 발급 받을 예정입니다.</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="motivation_career_plan">지원동기 및 진로계획 (최소 50자 이상 작성):</label>
-                <textarea name="motivation_career_plan" id="motivation_career_plan" rows="4" value="{{ applicant.motivation_career_plan }}"  disabled></textarea>
+                <textarea name="motivation_career_plan" id="motivation_career_plan" rows="4" disabled>{{ applicant.motivation_career_plan }}</textarea>
             </div>
 
             <div class="form-group">
@@ -97,21 +97,37 @@
     </div>
 
     <script>
-
         window.onload = function() {
-        var cardPossessionHas = document.getElementById('card_possession-has');
-        var cardPossessionWillIssue = document.getElementById('card_possession-will-issue');
-        var hasCardGroup = document.getElementById('has-card');
-        var willIssueCardGroup = document.getElementById('will-issue-card');
+            const cardPossessionHas = document.getElementById('card_possession-has');
+            const cardPossessionWillIssue = document.getElementById('card_possession-will-issue');
+            const hasCardGroup = document.getElementById('has-card');
+            const willIssueCardGroup = document.getElementById('will-issue-card');
 
-        if (cardPossessionHas.checked) {
-            willIssueCardGroup.style.display = 'none';
-        } else if (cardPossessionWillIssue.checked) {
-            hasCardGroup.style.display = 'none';
-        }
-    };
+            // 서버에서 받은 카드 소지 여부 값 ('has', 'will-issue' 또는 아무 값도 없는 상태)
+            const cardPossessionValue = ''; // 'has', 'will-issue', 또는 빈 값 가정
 
-
+            if (cardPossessionValue === 'has') {
+                if (cardPossessionHas) {
+                    cardPossessionHas.checked = true;
+                    cardPossessionHas.disabled = true; // 수정 불가능하도록 설정
+                }
+                if (willIssueCardGroup) {
+                    willIssueCardGroup.style.display = 'none';
+                }
+            } else if (cardPossessionValue === 'will-issue') {
+                if (cardPossessionWillIssue) {
+                    cardPossessionWillIssue.checked = true;
+                    cardPossessionWillIssue.disabled = true; // 수정 불가능하도록 설정
+                }
+                if (hasCardGroup) {
+                    hasCardGroup.style.display = 'none';
+                }
+            } else {
+                // cardPossessionValue가 빈 문자열 등일 경우, 체크박스는 초기 상태로 유지되어 사용자가 선택 가능
+                if (cardPossessionHas) cardPossessionHas.disabled = false;
+                if (cardPossessionWillIssue) cardPossessionWillIssue.disabled = false;
+            }
+        };
 
         function handleCheckbox(checkbox) {
             const checkboxes = document.querySelectorAll('input[name="card_possession"]');
@@ -120,31 +136,26 @@
                     cb.checked = false;
                 }
             });
-        };
+        }
 
-       
-    document.getElementById('survey-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // 기본 제출 방지
+        document.getElementById('survey-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 제출 방지
+        });
 
-    });
-
-
-    // CSRF 토큰을 가져오는 함수
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // CSRF 토큰을 찾습니다
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
                 }
             }
+            return cookieValue;
         }
-        return cookieValue;
-    };
-</script>
+    </script>
 </body>
 </html>

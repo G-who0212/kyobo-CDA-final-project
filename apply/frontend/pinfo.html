@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>참가 신청서</title>
+    <link rel="stylesheet" href="pinfo.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <h1>Easy<span style="color: #34c759;">cruit</span></h1>
+    </header>
+    <h2>[교보DTS] Cloud architecture DX Academy(CDA)<br>참가신청서</h2>
+    
+    <section class="privacy-section">
+        <h3>개인정보처리 방침에 대한 동의</h3>
+        <p class="privacy-instruction">
+            아래 링크 내용을 자세히 읽어보시고 모든 내용을 숙지하신 후에 개인정보처리방침에 동의 여부를 결정해 주시길 바랍니다.<br>
+            *링크: <a href="#" class="consent-link">[교보DTS 개인정보처리방침]</a>
+        </p>
+    </section>
+
+    <form onsubmit="return validateForm()">
+        <div class="consent-section">
+            <h4>1. 개인정보 제공 및 사용에 대한 동의</h4>
+            <div class="consent-box">
+                <label class="consent-label">
+                    1. 동의여부: <input type="checkbox" id="consent1" required>
+                </label>
+                <div class="name-signature-group">
+                    <div class="field-group">
+                        <label for="name1">2. 이름:</label>
+                        <input type="text" id="name1" class="name-input" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="signature1">서명:</label>
+                        <input type="text" id="signature1" class="signature-input" placeholder="(인)" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="consent-section">
+            <h4>2. 민감정보의 제공 및 사용에 관한 동의</h4>
+            <div class="consent-box">
+                <label class="consent-label">
+                    1. 동의여부: <input type="checkbox" id="consent2" required>
+                </label>
+                <div class="name-signature-group">
+                    <div class="field-group">
+                        <label for="name2">2. 이름:</label>
+                        <input type="text" id="name2" class="name-input" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="signature2">서명:</label>
+                        <input type="text" id="signature2" class="signature-input" placeholder="(인)" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="consent-section">
+            <h4>3. 제3자 정보제공 위탁에 대한 동의</h4>
+            <div class="consent-box">
+                <label class="consent-label">
+                    1. 동의여부: <input type="checkbox" id="consent3" required>
+                </label>
+                <div class="name-signature-group">
+                    <div class="field-group">
+                        <label for="name3">2. 이름:</label>
+                        <input type="text" id="name3" class="name-input" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="signature3">서명:</label>
+                        <input type="text" id="signature3" class="signature-input" placeholder="(인)" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">제출</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        const consent1 = document.getElementById("consent1").checked;
+        const consent2 = document.getElementById("consent2").checked;
+        const consent3 = document.getElementById("consent3").checked;
+
+        const name1 = document.getElementById("name1").value.trim();
+        const signature1 = document.getElementById("signature1").value.trim();
+        const name2 = document.getElementById("name2").value.trim();
+        const signature2 = document.getElementById("signature2").value.trim();
+        const name3 = document.getElementById("name3").value.trim();
+        const signature3 = document.getElementById("signature3").value.trim();
+
+        if (!consent1 || !consent2 || !consent3) {
+            alert("모든 동의 여부를 체크해 주세요.");
+            return false;
+        }
+
+        if (name1 === "" || signature1 === "" || name2 === "" || signature2 === "" || name3 === "" || signature3 === "") {
+            alert("모든 이름과 서명을 입력해 주세요.");
+            return false;
+        }
+
+        window.location.href = "apply.html";
+        return false;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 700px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a3e6e;
+    text-align: left;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.privacy-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.privacy-instruction {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.consent-link {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.consent-section {
+    margin-top: 20px;
+}
+
+.consent-section h4 {
+    font-size: 16px;
+    background-color: #34c759;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.consent-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.consent-label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #1a3e6e;
+    margin: 8px 0;
+}
+
+.consent-label input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
+.name-signature-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.field-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.name-input, .signature-input {
+    padding: 6px;
+    border: 1px solid #ddd; /* 기본 테두리 추가 */
+    border-radius: 5px; /* 둥근 모서리 추가 */
+    width: 50%;
+    color: #1a3e6e;
+    font-weight: bold;
+    outline: none; /* 포커스 시 테두리 없애기 */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #34c759;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #2eaa4b;
+}
