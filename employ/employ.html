@@ -32,24 +32,30 @@
 
     <script>
         function openApplicantDetail(name) {
-        // 이름을 URL 쿼리 파라미터로 전달하여 지원자 세부 정보를 가져오는 페이지로 이동
-        const token = localStorage.getItem('accessToken'); 
-        const url = `/api/applicant?name=${encodeURIComponent(name)}`;
-        fetch(url, {
+    const token = localStorage.getItem('accessToken');  // JWT 토큰
+    const url = `/api/applicant?name=${encodeURIComponent(name)}`;
+
+    // 서버로부터 HTML 요청
+    fetch(url, {
         method: 'GET',
         headers: {
-        'Authorization': `Bearer ${token}`,  // JWT 토큰을 Authorization 헤더에 추가
-        'Content-Type': 'application/json',
-    }
-})
-.then(response => response.json())
-.then(data => {
-    console.log(data); // 응답 데이터 처리
-})
-.catch(error => {
-    console.error('Error:', error); // 오류 처리
-}); // 새 브라우저 탭에서 열기
-        };
+            'Authorization': `Bearer ${token}`,  // JWT 토큰을 Authorization 헤더에 추가
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())  // 서버에서 렌더링된 HTML을 텍스트로 받기
+    .then(html => {
+        // 새 탭 열기
+        const newTab = window.open();
+        
+        // 새 탭에 HTML 내용 삽입
+        newTab.document.write(html);
+        newTab.document.close();  // HTML을 삽입 후 문서 닫기
+    })
+    .catch(error => {
+        console.error('Error:', error);  // 오류 처리
+    });
+}
 
     
     </script>  
