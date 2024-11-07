@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교보 DTS 지원</title>
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Easy<span>cruit</span></h1>
+            <h2>[교보DTS] Cloud architecture DX Academy(CDA)</h2>
+            <h3>참가신청서</h3>
+        </div>
+    
+        <div class="form-section">
+            <div class="form-group">
+                <label class="form-label">이름</label>
+                <input type="text" id="name" name="name" required class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">주민번호 앞자리</label>
+                <input type="text" id="date_of_birth" name="date_of_birth" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">휴대전화</label>
+                <input type="tel" id="phone_num" name="phone_num" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="email" id="email" name="email" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">거주지</label>
+                <input type="text" id="residence" name="residence" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">학력사항</label>
+                <select name="educational_background" id="educational_background" required class="form-input">
+                    <option value="" selected disabled>선택하세요</option>
+                    <option value="high-school">고등학교 졸업</option>
+                    <option value="associate-degree">전문학사</option>
+                    <option value="university-in-progress-credits">대학 재학(졸업학점 이수 O)</option>
+                    <option value="university-in-progress-no-credits">대학 재학(졸업학점 이수 X)</option>
+                    <option value="bachelor">학사</option>
+                    <option value="master">석사 이상</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">학교</label>
+                <input type="text" id="school" name="school" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">전공학과</label>
+                <input type="text" id="major" name="major" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">IT/클라우드 공인 관련 자격증</label>
+                <input type="text" id="certificate" name="certificate" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">IT 관련 대회, 공모전, 대외활동</label>
+                <textarea name="it_experience" id="it_experience" rows="4" required class="form-input"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">유사교육 수료 경험</label>
+                <select name="education_experience" id="education_experience" onchange="toggleOtherEducationInput();" class="form-input">
+                    <option value="" selected disabled>선택하세요</option>
+                    <option value="none">해당없음</option>
+                    <option value="less-than-one-month">1개월 미만</option>
+                    <option value="one-to-three-months">1개월 이상 ~ 3개월 미만</option>
+                    <option value="three-to-six-months">3개월 이상</option>
+                    <option value="other">기타</option>
+                </select>
+                <input type="text" id="other-education-input" name="other-education-name" placeholder="해당 교육명을 작성해주세요" class="form-input" style="display: none;">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">IT 관련 업무 경험</label>
+                <select name="it_career_experience" id="it_career_experience" onchange="toggleCompanyInput();" class="form-input">
+                    <option value="" selected disabled>선택하세요</option>
+                    <option value="none">해당없음</option>
+                    <option value="less-than-six-months">6개월 미만</option>
+                    <option value="six-months-to-one-year">6개월 ~ 1년</option>
+                    <option value="one-to-two-years">1년 ~ 2년</option>
+                    <option value="two-to-three-years">2년 ~ 3년</option>
+                    <option value="more-than-three-years">3년 이상</option>
+                </select>
+                <input type="text" id="company-name" name="company-name" placeholder="해당 기업명 및 업무" class="form-input" style="display: none;">
+            </div>
+    
+            <div class="checkbox-section">
+                <div class="form-group">
+                    <label class="form-label">내일 배움카드 소지여부</label>
+                   
+                    <div class="checkbox-group">
+                        <div class="form-group">
+                            <input type="checkbox" id="card_possession-has" name="card_possession" value="has" onclick="handleCheckbox(this)">
+                            <label for="card_possession-has" class="inline-label">내일배움카드가 있습니다.</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="card_possession-will-issue" name="card_possession" value="will-issue" onclick="handleCheckbox(this)">
+                            <label for="card_possession-will-issue" class="inline-label">내일배움을 발급 받을 예정입니다.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        <div class="form-section">
+            <div class="form-group">
+                <label class="form-label">지원동기 및 계획 (최소 50자 이상)</label>
+                <textarea id="motivation_career_plan" name="motivation_career_plan" rows="4" required class="form-input" style="resize: none;"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">신청 경로</label>
+                <select name="source_of_info" id="source_of_info" onchange="toggleOtherInput();" class="form-input">
+                    <option value="" selected disabled>선택하세요</option>
+                    <option value="naver-search">네이버 검색</option>
+                    <option value="google-search">구글 검색</option>
+                    <option value="naver-banner">네이버 배너 광고</option>
+                    <option value="instagram">인스타그램</option>
+                    <option value="youtube">유튜브</option>
+                    <option value="blog-community">블로그/카페/커뮤니티</option>
+                    <option value="kakao-open-chat">카카오톡 오픈채팅방</option>
+                    <option value="email">메일</option>
+                    <option value="bootcamp">부트캠프</option>
+                    <option value="news-article">뉴스기사</option>
+                    <option value="campus-center">대학 캠퍼스/취창업센터</option>
+                    <option value="referral-employee">지인추천(교보DTS 임직원)</option>
+                    <option value="referral-other">지인추천(기타)</option>
+                    <option value="self-introduction-site">자소설닷컴</option>
+                    <option value="other">기타</option>
+                </select>
+                <input type="text" id="other-input" name="application-source-other" placeholder="기타를 입력하세요" class="form-input" style="display: none;">
+            </div>
+        </div>
+    
+        <button class="submit-button">제출 [ 2 / 2 ]</button>
+    </div>
+
+<script>
+    function handleCheckbox(checkbox) {
+    const checkboxes = document.querySelectorAll('input[name="card_possession"]');
+    checkboxes.forEach((cb) => {
+        if (cb !== checkbox) {
+            cb.checked = false;
+        }
+    });
+}
+
+function toggleOtherInput() {
+    const applicationSource = document.getElementById('source_of_info');
+    const otherInput = document.getElementById('other-input');
+    otherInput.style.display = applicationSource.value === 'other' ? 'block' : 'none';
+}
+
+function toggleOtherEducationInput() {
+    const similarEducation = document.getElementById('education_experience');
+    const otherEducationInput = document.getElementById('other-education-input');
+    otherEducationInput.style.display = similarEducation.value === 'other' ? 'block' : 'none';
+}
+
+function toggleCompanyInput() {
+    const workExperience = document.getElementById('it_career_experience');
+    const companyInput = document.getElementById('company-name');
+    companyInput.style.display = workExperience.value !== 'none' ? 'block' : 'none';
+}
+
+
+</script>
+</body>
+</html>

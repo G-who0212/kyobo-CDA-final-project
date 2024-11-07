@@ -1,0 +1,121 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #F8F8FA;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    width: 70%;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid #E5E5E5;
+    position: relative;
+}
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #003056;
+}
+.logo span {
+    color: #38AF72;
+}
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 50px; /* 로고와 간격 조정 */
+}
+.header h1 {
+    font-size: 24px;
+    color: #363636;
+    font-weight: 700;
+    margin: 0;
+}
+.header h2 {
+    font-size: 20px;
+    color: #363636;
+    margin: 5px 0;
+}
+.info-section {
+    text-align: center;
+    font-size: 16px;
+    color: #363636;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+.info-section a {
+    color: #2D4CE5;
+    text-decoration: underline;
+}
+.agreement-section {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.agreement-title {
+    display: inline-block;
+    width: 300px;
+    background-color: #8ED29D;
+    color: #003056;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.agreement-item {
+    margin-top: 10px;
+}
+.agreement-item label {
+    font-size: 16px;
+    color: #003056;
+}
+.name-signature-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.field {
+    display: flex;
+    align-items: center;
+}
+.field label {
+    font-size: 16px;
+    color: #003056;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.small-input {
+    width: 100px; /* 크기를 줄임 */
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #38AF72;
+    color: #003056;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}

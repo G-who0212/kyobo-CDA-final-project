@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 동의서</title>
+    <link rel="stylesheet" href="pinfo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Easy<span>cruit</span></div>
+        <div class="header">
+            <h1>[교보DTS] Cloud architecture DX Academy(CDA)</h1>
+            <h2>참가신청서</h2>
+        </div>
+
+        <div class="info-section">
+            개인정보처리 방침에 대한 동의<br>
+            아래 링크 내용을 자세히 읽어보시고 모든 내용을 숙지하신 후에 개인정보처리방침에 동의 여부를 결정해 주시길 바랍니다.<br>
+            *링크 : <a href="#">[교보DTS 개인정보처리방침]</a>
+        </div>
+
+        <!-- 항목 1 -->
+        <div class="agreement-section">
+            <div class="agreement-title">1. 개인정보 제공 및 사용에 대한 동의</div>
+            <div class="agreement-item">
+                <label>
+                    <input type="radio" name="agreement1" value="agree" required> 동의합니다.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="agreement1" value="disagree"> 동의하지 않습니다.
+                </label>
+            </div>
+        </div>
+
+        <!-- 항목 2 -->
+        <div class="agreement-section">
+            <div class="agreement-title">2. 민감정보의 제공 및 사용에 관한 동의</div>
+            <div class="agreement-item">
+                <label>
+                    <input type="radio" name="agreement2" value="agree" required> 동의합니다.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="agreement2" value="disagree"> 동의하지 않습니다.
+                </label>
+            </div>
+        </div>
+
+        <!-- 항목 3 -->
+        <div class="agreement-section">
+            <div class="agreement-title">3. 제3자 정보제공 위탁에 대한 동의</div>
+            <div class="agreement-item">
+                <label>
+                    <input type="radio" name="agreement3" value="agree" required> 동의합니다.
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="agreement3" value="disagree"> 동의하지 않습니다.
+                </label>
+            </div>
+        </div>
+
+        <!-- 이름 및 서명란 -->
+        <div class="name-signature-section">
+            <div class="field">
+                <label>이름:</label>
+                <input type="text" id="final_name" class="small-input" placeholder="이름" required>
+            </div>
+            <div class="field">
+                <label>서명:</label>
+                <input type="text" id="final_signature" class="small-input" placeholder="서명(인)" required>
+            </div>
+        </div>
+
+        <!-- 제출 버튼 -->
+        <button class="submit-button" onclick="validateForm()">제출 [ 1 / 2 ]</button>
+    </div>
+
+    <script>
+        function validateForm() {
+            // 동의 항목 확인
+            const agreement1 = document.querySelector('input[name="agreement1"]:checked');
+            const agreement2 = document.querySelector('input[name="agreement2"]:checked');
+            const agreement3 = document.querySelector('input[name="agreement3"]:checked');
+
+            // 이름 및 서명 확인
+            const name = document.getElementById("final_name").value.trim();
+            const signature = document.getElementById("final_signature").value.trim();
+
+            // 각 조건을 순차적으로 확인하고, 충족하지 못하면 alert 메시지를 표시하고 종료
+            if (!agreement1 || agreement1.value !== "agree") {
+                alert("개인정보 제공 및 사용에 대한 동의를 선택해 주세요.");
+                return;
+            }
+            if (!agreement2 || agreement2.value !== "agree") {
+                alert("민감정보 제공 및 사용에 대한 동의를 선택해 주세요.");
+                return;
+            }
+            if (!agreement3 || agreement3.value !== "agree") {
+                alert("제3자 정보제공 위탁에 대한 동의를 선택해 주세요.");
+                return;
+            }
+            if (!name) {
+                alert("이름을 입력해 주세요.");
+                return;
+            }
+            if (!signature) {
+                alert("서명을 입력해 주세요.");
+                return;
+            }
+
+            // 모든 조건을 충족하면 apply.html로 이동
+            window.location.href = "apply.html";
+        }
+    </script>
+</body>
+</html>

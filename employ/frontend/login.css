@@ -1,0 +1,64 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F8F8FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    width: 600px; /* 기존 400px에서 500px로 확대 */
+    padding: 100px; /* 기존 40px에서 50px로 확대 */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.logo {
+    font-size: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.logo span {
+    color: #003056;
+}
+.logo span:last-child {
+    color: #38AF72;
+}
+.title {
+    font-size: 20px;
+    color: #003056;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 20px; /* 간격을 좀 더 넓혀 줌 */
+    text-align: left;
+}
+.form-group label {
+    font-size: 16px; /* 라벨 폰트 크기를 살짝 키움 */
+    color: #003056;
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px; /* 입력 필드의 높이를 살짝 키움 */
+    font-size: 15px; /* 입력 폰트 크기 확대 */
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.login-button {
+    width: 100%;
+    padding: 12px; /* 버튼 크기 확대 */
+    font-size: 18px; /* 버튼 폰트 크기 확대 */
+    font-weight: 700;
+    color: white;
+    background-color: #38AF72;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
