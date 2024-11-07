@@ -142,7 +142,7 @@
                     <option value="self-introduction-site">자소설닷컴</option>
                     <option value="other">기타</option>
                 </select>
-                <input type="text" id="other-input" name="application-source-other" placeholder="기타를 입력하세요" class="form-input" style="display: none;">
+                <input type="text" id="other-input" name="application-source-other" class="form-input" style="display: none;">
             </div>
         </div>
     
@@ -176,6 +176,53 @@ function toggleCompanyInput() {
     const companyInput = document.getElementById('company-name');
     companyInput.style.display = workExperience.value !== 'none' ? 'block' : 'none';
 }
+
+document.getElementById('application-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // 폼 데이터 수집
+    const applicationData = {
+            applying_to: "교보 DTS Cloud Architecture DX Academy",
+            name: document.getElementById('name').value,
+            date_of_birth: document.getElementById('date_of_birth').value,
+            phone_num: document.getElementById('phone_num').value,
+            email: document.getElementById('email').value,
+            residence: document.getElementById('residence').value,
+            educational_background: document.getElementById('educational_background').value,
+            school: document.getElementById('school').value,
+            major: document.getElementById('major').value,
+            certificate: document.getElementById('certificate').value,
+            it_experience: document.getElementById('it_experience').value,
+            education_experience: document.getElementById('education_experience').value === 'other' ? document.getElementById('other-education-input').value : document.getElementById('education_experience').value,
+            it_career_experience: document.getElementById('it_career_experience').value !== 'none' ? document.getElementById('company-name').value : null,
+            card_possession: document.querySelector('input[name="card_possession"]:checked') ? 
+                              document.querySelector('input[name="card_possession"]:checked').value : null,
+            motivation_career_plan: document.getElementById('motivation_career_plan').value,
+            source_of_info: document.getElementById('source_of_info').value === 'other' ? document.getElementById('other-input').value : document.getElementById('source_of_info').value
+        };
+
+    // Fetch API로 POST 요청 보내기
+    fetch('/api/application', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(applicationData)
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("서버 오류");
+        return response.json();
+    })
+    .then(data => {
+        alert('신청이 성공적으로 제출되었습니다.');
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('오류 발생:', error);
+        alert('신청 제출 중 오류가 발생했습니다. 다시 시도해주세요.');
+    });
+});
+
 
 
 </script>
