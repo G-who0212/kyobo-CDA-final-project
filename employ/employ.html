@@ -7,27 +7,67 @@
     <link rel="stylesheet" href="employ.css"> <!-- CSS 파일 링크 -->
 </head>
 <body>
-    <h1>지원자 목록</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>이름</th>
-                <th>전화번호</th>
-                <th>이메일</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for applicant in applicants %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td><a href="javascript:void(0);" onclick="openApplicantDetail('{{ applicant.name|escapejs }}')">{{ applicant.name }}</a></td> <!-- 클릭 시 새 창 열기 -->
-                <td>{{ applicant.phone_num }}</td>
-                <td>{{ applicant.email }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="header">
+            <h1>Easy<span>cruit</span></h1>
+        </div>
+        
+        <div class="filters">
+            <select>
+                <option>정렬</option>
+            </select>
+            <input type="date">
+            <span>→</span>
+            <input type="date">
+            <input type="text" placeholder="검색">
+            <button class="apply-button">적용</button>
+        </div>
+    
+        <div class="table-wrapper">
+            <div class="batch-buttons">
+                <div class="batch-button">1기</div>
+                <div class="batch-button">2기</div>
+                <div class="batch-button">3기</div>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>제출일</th>
+                            <th>전화번호</th>
+                            <th>주민번호 앞자리</th>
+                            <th>확인</th>
+                            <th>수정</th>
+                            <th>삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for applicant in applicants %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ applicant.name }}</td>
+                        <td>{{ applicant.제출일 }}</td>
+                        <td>{{ applicant.phone_num }}</td>
+                        <td>{{ applicant.date_of_birth }}</td>
+                        <td><button class="status-btn" onclick="openApplicantDetail('{{ applicant.name|escapejs }}')">확인</button></td>
+                        <td><span class="edit-btn">✎</span></td>
+                        <td><span class="delete-btn">✖</span></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div class="pagination">
+            <span>Page</span>
+            <span class="page-btn">◀</span>
+            <span class="current-page">1</span>
+            <span class="page-btn">▶</span>
+        </div>
+    </div>
 
     <script>
         function openApplicantDetail(name) {
