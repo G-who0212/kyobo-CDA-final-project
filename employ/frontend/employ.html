@@ -50,7 +50,7 @@
                             <td>{{ applicant.name }}</td>
                             <td>{{ applicant.submitted_at|date:"Y년 m월 d일 H:i" }}</td>  <!-- 날짜와 시간 표시 -->
                             <td>{{ applicant.phone_num }}</td>
-                            <td>{{ applicant.date_of_birth|date:"Y년 m월 d일" }}</td>
+                            <td>{{ applicant.date_of_birth }}</td>
                             
                             <td><button class="status-btn" onclick="openApplicantDetail( '{{ applicant.id }}' )" >확인</button></td>
                             <td><span class="edit-btn">✎</span></td>
