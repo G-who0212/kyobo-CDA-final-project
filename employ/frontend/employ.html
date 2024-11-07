@@ -44,18 +44,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for applicant in applicants %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ applicant.name }}</td>
-                        <td>{{ applicant.제출일 }}</td>
-                        <td>{{ applicant.phone_num }}</td>
-                        <td>{{ applicant.date_of_birth }}</td>
-                        <td><button class="status-btn" onclick="openApplicantDetail('{{ applicant.name|escapejs }}')">확인</button></td>
-                        <td><span class="edit-btn">✎</span></td>
-                        <td><span class="delete-btn">✖</span></td>
-                    </tr>
-                    {% endfor %}
+                        {% for applicant in applicants %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ applicant.name }}</td>
+                            <td>{{ applicant.submitted_at|date:"Y년 m월 d일 H:i" }}</td>  <!-- 날짜와 시간 표시 -->
+                            <td>{{ applicant.phone_num }}</td>
+                            <td>{{ applicant.date_of_birth|date:"Y년 m월 d일" }}</td>
+                            
+                            <td><button class="status-btn" onclick="openApplicantDetail( '{{ applicant.id }}' )" >확인</button></td>
+                            <td><span class="edit-btn">✎</span></td>
+                            <td><span class="delete-btn">✖</span></td>
+                        </tr>
+                        {% endfor %}
+                        
                     </tbody>
                 </table>
             </div>
@@ -79,7 +81,7 @@
                 return;
             }
             
-            const url = `/api/applicant?name=${encodeURIComponent(name)}`;
+            const url = `/api/applicants?id=${encodeURIComponent(id)}`;
             
             fetch(url, {
                 method: 'GET',
@@ -106,8 +108,8 @@
             .catch(error => {
                 console.error('Error:', error);  // 오류 처리
                 alert("지원자 정보를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.");
-            });
-        }
+            })
+        };
     </script>
 </body>
 </html>
