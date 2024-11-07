@@ -3,7 +3,3 @@ Django==5.1.2
 djangorestframework==3.15.2
 mysqlclient==2.2.5
 sqlparse==0.5.1
-
-# System dependencies
-# mysql (installed in homebrew)
-# pkg-config (installed via homebrew)

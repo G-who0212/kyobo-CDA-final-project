@@ -6,3 +6,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = '__all__'
+
+class ApplicationPartialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ('name', 'submitted_at', 'phone_num', 'date_of_birth')

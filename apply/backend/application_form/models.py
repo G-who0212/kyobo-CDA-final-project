@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Application(models.Model):
     applying_to = models.CharField(max_length=50)
@@ -17,6 +18,8 @@ class Application(models.Model):
     card_possession = models.CharField(max_length=100)  # e.g., '내일배움카드가 있습니다.'
     motivation_career_plan = models.TextField()  # Detailed career motivation
     source_of_info = models.CharField(max_length=100)  # e.g., '자소설닷컴'
+    submitted_at = models.DateField(auto_now_add=True, null=True)
+
 
     def __str__(self):
         return f"{self.name} - {self.email}"
