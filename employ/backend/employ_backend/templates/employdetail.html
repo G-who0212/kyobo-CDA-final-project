@@ -4,86 +4,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지원자 정보</title>
+    <title>지원서 정보</title>
     <link rel="stylesheet" href="{% static 'employdetail.css' %}">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Easy<span>cruit</span></h1>
-            <h2>지원자 상세 정보</h2>
-        </div>
-        
-        <div class="applicant-info">
-            <div class="info-group">
-                <label>이름</label>
-                <p>{{ applicant.name }}</p>
-            </div>
-            <div class="info-group">
-                <label>생년월일</label>
-                <p>{{ applicant.date_of_birth }}</p>
-            </div>
-            <div class="info-group">
-                <label>전화번호</label>
-                <p>{{ applicant.phone_num }}</p>
-            </div>
-            <div class="info-group">
-                <label>이메일</label>
-                <p>{{ applicant.email }}</p>
-            </div>
-            <div class="info-group">
-                <label>거주지</label>
-                <p>{{ applicant.residence }}</p>
-            </div>
-            <div class="info-group">
-                <label>학력</label>
-                <p>{{ applicant.educational_background }}</p>
-            </div>
-            <div class="info-group">
-                <label>학교</label>
-                <p>{{ applicant.school }}</p>
-            </div>
-            <div class="info-group">
-                <label>전공</label>
-                <p>{{ applicant.major }}</p>
-            </div>
-            <div class="info-group">
-                <label>자격증</label>
-                <p>{{ applicant.certificate }}</p>
-            </div>
-            <div class="info-group">
-                <label>IT 경험</label>
-                <p>{{ applicant.it_experience }}</p>
-            </div>
-            <div class="info-group">
-                <label>교육 경험</label>
-                <p>{{ applicant.education_experience }}</p>
-            </div>
-            <div class="info-group">
-                <label>IT 경력</label>
-                <p>{{ applicant.it_career_experience }}</p>
-            </div>
-            <div class="info-group">
-                <label>카드 소지 여부</label>
-                <p>{{ applicant.card_possession }}</p>
-            </div>
-            <div class="info-group">
-                <label>지원 동기 및 커리어 계획</label>
-                <p>{{ applicant.motivation_career_plan }}</p>
-            </div>
-            <div class="info-group">
-                <label>정보 출처</label>
-                <p>{{ applicant.source_of_info }}</p>
-            </div>
-            <div class="info-group">
-                <label>제출일</label>
-                <p>{{ applicant.submitted_at }}</p>
-            </div>
+            <h1 class="title">Easy<span>cruit</span></h1>
+            <h2>[교보DTS] Cloud Architecture DX Academy(CDA)</h2>
+            <h3>지원서 세부 정보</h3>
         </div>
 
-        <div class="button-group">
-            <button onclick="window.history.back()">뒤로가기</button>
+        <div class="content-section">
+            <div class="info-group">
+                <div class="info-label">이름</div>
+                <div class="info-value">{{ applicant.name }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">생년월일</div>
+                <div class="info-value">{{ applicant.date_of_birth }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">휴대전화</div>
+                <div class="info-value">{{ applicant.phone_num }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">E-mail</div>
+                <div class="info-value">{{ applicant.email }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">거주지</div>
+                <div class="info-value">{{ applicant.residence }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">학력</div>
+                <div class="info-value">{{ applicant.educational_background }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">학교</div>
+                <div class="info-value">{{ applicant.school }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">전공학과</div>
+                <div class="info-value">{{ applicant.major }}</div>
+            </div>
+            <div class="info-group">
+                <div class="info-label">IT/클라우드 자격증</div>
+                <div class="info-value">{{ applicant.certificate }}</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">유사교육 수료 경험</div>
+                <div class="info-value">{{ applicant.education_experience}}</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">IT 경력 사항</div>
+                <div class="info-value">{{ applicant.it_career_experience }}</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">내일배움카드</div>
+                <div class="info-value">{{ applicant.card_possession }}</div>
+            </div>
+
+
+            <div class="info-group">
+                <div class="info-label">신청 경로</div>
+                <div class="info-value">{{ applicant.source_of_info }}</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">제출일</div>
+                <div class="info-value">{{ applicant.submitted_at }}</div>
+            </div>
+
+            <!-- IT 관련 대회, 공모전, 대외활동 항목 추가 -->
+            <div class="info-group">
+                <div class="info-label">IT 관련 활동</div>
+            </div>
+            <div class="info-group">
+                <div class="info-value scrollable">{{ applicant.it_experience }}</div>
+            </div>
+
+            <!-- 지원 동기 및 계획 항목 추가 -->
+            <div class="info-group">
+                <div class="info-label">지원 동기 및 계획</div>
+            </div>
+            <div class="info-group">
+                <div class="info-value scrollable">{{ applicant.motivation_career_plan }}</div>
+            </div>
+
+            
         </div>
+
+        <button class="close-button" onclick="window.history.back()">닫기</button>
     </div>
 </body>
 </html>
