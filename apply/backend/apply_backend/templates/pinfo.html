@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개인정보 동의서</title>
-    <link rel="stylesheet" href="pinfo.css">
+    <link rel="stylesheet" href="{% static 'pinfo.css' %}">
 </head>
 <body>
     <div class="container">
@@ -112,7 +113,7 @@
             }
 
             // 모든 조건을 충족하면 apply.html로 이동
-            window.location.href = "apply.html";
+            window.location.href = "/apply";
         }
     </script>
 </body>

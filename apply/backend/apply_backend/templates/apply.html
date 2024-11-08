@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교보 DTS 지원</title>
-    <link rel="stylesheet" href="apply.css">
+    <link rel="stylesheet" href="{% static 'apply.css' %}">
 </head>
 <body>
     <div class="container">
@@ -200,7 +201,7 @@
         };
 
         // Fetch API로 POST 요청 보내기
-        fetch('/api/application', {
+        fetch('/api/application/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
