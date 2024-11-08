@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지원자 목록</title>
+    <link rel="stylesheet" href="{% static 'employ.css' %}"> <!-- CSS 파일 링크 -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Easy<span>cruit</span></h1>
+        </div>
+        
+        <div class="filters">
+            <select>
+                <option>정렬</option>
+            </select>
+            <input type="date">
+            <span>→</span>
+            <input type="date">
+            <input type="text" placeholder="검색">
+            <button class="apply-button">적용</button>
+        </div>
+    
+        <div class="table-wrapper">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>제출일</th>
+                            <th>전화번호</th>
+                            <th>주민번호 앞자리</th>
+                            <th>확인</th>
+                            <th>수정</th>
+                            <th>삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicant-table-body">
+                        <!-- JavaScript에서 데이터를 불러와 여기에 추가합니다 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div class="pagination">
+            <span>Page</span>
+            <span class="page-btn">◀</span>
+            <span class="current-page">1</span>
+            <span class="page-btn">▶</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem('accessToken');  // JWT 토큰 가져오기
+            console.log(token);
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                window.location.href = '/login';  // 로그인 페이지로 리디렉션
+                return;
+            }
+            
+            fetch('/account/applicants/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,  // JWT 토큰을 Authorization 헤더에 추가
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`서버 오류: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const tableBody = document.getElementById('applicant-table-body');
+                tableBody.innerHTML = ''; // 기존 내용을 지우고 새로 추가
+
+                data.forEach((applicant, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${String(index + 1).padStart(2, '0')}</td>
+                        <td><a href="#" onclick="openApplicantDetail(${applicant.id})">${applicant.name}</a></td>
+                        <td>${new Date(applicant.submitted_at).toLocaleDateString()}</td>
+                        <td>${applicant.phone_num}</td>
+                        <td>${applicant.date_of_birth}</td>
+                        <td><button class="status-btn" onclick="openApplicantDetail(${applicant.id})">확인</button></td>
+                        <td><span class="edit-btn">✎</span></td>
+                        <td><span class="delete-btn">✖</span></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);  // 오류 처리
+                alert("지원자 목록을 불러올 수 없습니다. 잠시 후 다시 시도해주세요.");
+            });
+        });
+
+        function openApplicantDetail(id) {
+            const token = localStorage.getItem('accessToken');  // JWT 토큰 가져오기
+
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                window.location.href = '/login';  // 로그인 페이지로 리디렉션
+                return;
+            }
+
+            // 지원자 상세 정보를 보여주는 페이지로 리다이렉트
+            window.location.href = `/employdetail/${id}`;
+        }
+    </script>
+</body>
+</html>

@@ -73,7 +73,7 @@ ROOT_URLCONF = 'employ_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['employ_backend/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,6 +102,14 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+import os
+print("STATICFILES_DIRS:", os.path.join(BASE_DIR, "static"))
 
 
 # Password validation
