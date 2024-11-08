@@ -12,7 +12,7 @@
             <span>Easy</span><span>cruit</span>
         </div>
         <div class="title">관리자 로그인</div>
-        <form>
+        <form id="login-form" name="login-form">
             <div class="form-group">
                 <label for="username">ID</label>
                 <input type="text" id="username" name="username">
@@ -47,7 +47,6 @@
 
             // 각 필드의 값을 가져와 JSON 객체 생성
             const formData = {
-                company: document.getElementById('company').value,
                 username: document.getElementById('email').value,
                 password: document.getElementById('password').value,
             };
