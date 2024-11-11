@@ -98,7 +98,8 @@ DATABASES = {
         'NAME': 'easycruit_admin',
         'USER': 'hoo',
         'PASSWORD': '1254410',
-        'HOST': 'localhost',
+        # 'HOST': 'localhost',
+        'HOST': 'host.docker.internal',
         'PORT': '3306',
     }
 }

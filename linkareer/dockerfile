@@ -1,0 +1,14 @@
+# Step 1: Use Nginx base image
+FROM nginx:latest
+
+# Step 2: Copy Nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Step 3: Copy static files to Nginx html directory
+COPY linkareer /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
