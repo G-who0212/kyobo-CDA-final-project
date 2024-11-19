@@ -25,4 +25,5 @@ urlpatterns = [
     path('api/', include('application_form.urls')),
     path('', views.pinfo, name='pinfo'), 
     path('apply/', views.apply, name='apply'),
+    path('', include('django_prometheus.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

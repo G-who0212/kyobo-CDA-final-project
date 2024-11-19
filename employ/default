@@ -52,6 +52,10 @@ server {
 		uwsgi_pass django;
 	}
 
+	# location /static/ {
+	# 	alias /employ/backend/staticfiles/;
+	# }
+
 	# pass PHP scripts to FastCGI server
 	#
 	#location ~ \.php$ {

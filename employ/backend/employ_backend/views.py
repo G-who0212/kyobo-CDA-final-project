@@ -10,7 +10,8 @@ def employ(request):
     return render(request,'employ.html')
 
 def employdetail(request, pk):
-    url = f'http://127.0.0.1:8000/api/applicationsall/applications/{pk}/'
+    url = f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/{pk}/'
+    # url = f'http://127.0.0.1:8000/api/applicationsall/applications/{pk}/'
     # headers = {
     #     'Authorization': f'Bearer {request.session.get("accessToken")}',  # 세션이나 쿠키에 저장된 accessToken을 불러와 Authorization 헤더에 추가
     # }

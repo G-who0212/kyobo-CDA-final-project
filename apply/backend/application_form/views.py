@@ -3,6 +3,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView, status
 from.serializers import ApplicationSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 class ApplicantAPIView(APIView):
     def post(self, request: Request):
@@ -19,3 +20,5 @@ from .models import Application
 class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
+    filter_backends = [DjangoFilterBackend]  # Add filter backend
+    filterset_fields = ['applying_to']  # Specify filterable fields

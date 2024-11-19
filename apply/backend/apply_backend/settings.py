@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     'application_form',
     'rest_framework',
     'corsheaders',
+    'django_prometheus',
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # CORS middleware for Django
+    # 'apply_backend.middleware.RemoveSecurityHeadersMiddleware', # 배포할때는 삭제해야함.
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +56,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
+
+# SECURE_CROSS_ORIGIN_OPENER_POLICY = None # 배포할때는 삭제해야함.
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
@@ -82,25 +89,51 @@ WSGI_APPLICATION = 'apply_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'countfit_test',
+#         'USER': 'hoo',
+#         'PASSWORD': '1254410',
+#         'HOST': 'localhost',
+#         # 'HOST': 'host.docker.internal',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'easycruit',
-        'USER': 'hoo',
-        'PASSWORD': '1254410',
+        'USER': 'jjh',
+        'PASSWORD': '123123',
         # 'HOST': 'localhost',
-        'HOST': 'host.docker.internal',
+        # 'HOST': 'host.docker.internal',
+        'HOST': '192.168.0.102',
         'PORT': '3306',
     }
 }
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+# ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# 개발 과정에서 사용할 정적 파일의 경로
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-print("STATICFILES_DIRS:", os.path.join(BASE_DIR, "static"))
+# 배포 환경에서 collectstatic 명령어를 실행하여 모든 정적 파일이 모이는 위치
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# STATIC_URL 설정
+STATIC_URL = '/static/'
+
+print("STATICFILES_DIRS:", os.path.join(BASE_DIR, "staticfiles"))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

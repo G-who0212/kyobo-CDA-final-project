@@ -24,19 +24,31 @@ RUN pip3 install --upgrade pip && pip3 install -r backend/requirements.txt
 # 백엔드 서버 디렉토리로 이동
 WORKDIR /employ/backend/
 
-# uWSGI 설치
-RUN pip3 install uwsgi
+ENV DJANGO_ENV=production
+ENV PYTHONUNBUFFERED=1
 
-# uWSGI 설정 파일 복사 (로컬에서 준비된 uwsgi.ini를 컨테이너로 복사)
-COPY uwsgi.ini /employ/backend/uwsgi.ini
+# # uWSGI 설치
+# RUN pip3 install uwsgi
 
-# Nginx 설정 파일 복사 (로컬에서 준비된 nginx.conf를 복사하여 Nginx 설정)
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default /etc/nginx/sites-enabled/default
+# # uWSGI 설정 파일 복사 (로컬에서 준비된 uwsgi.ini를 컨테이너로 복사)
+# COPY uwsgi.ini /employ/backend/uwsgi.ini
 
-# Nginx 포트 오픈
-EXPOSE 80
+# # Nginx 설정 파일 복사 (로컬에서 준비된 nginx.conf를 복사하여 Nginx 설정)
+# COPY nginx.conf /etc/nginx/nginx.conf
+# COPY default /etc/nginx/sites-enabled/default
 
+# 8000 포트 오픈
+EXPOSE 8000
+
+RUN python manage.py collectstatic --noinput
+
+# CMD ["sh", "-c", "python manage.py makemigrations account && python manage.py migrate account && python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver;'"]
+# CMD ["sh", "-c", "python manage.py makemigrations account && python manage.py migrate account && python manage.py makemigrations && python manage.py migrate && python manage.py runserver;'"]
+CMD ["sh", "-c", "python manage.py makemigrations account && python manage.py migrate account && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
+
+# CMD ["sh", "-c", "python manage.py makemigrations account && python manage.py migrate account && python manage.py migrate admin --fake && python manage.py migrate & uwsgi --ini uwsgi.ini & nginx -g 'daemon off;'"]
+# CMD ["sh", "-c", "python manage.py makemigrations account && python manage.py migrate account && python manage.py makemigrations && python manage.py migrate & uwsgi --ini uwsgi.ini & nginx -g 'daemon off;'"]
 # uWSGI와 Nginx 시작
 # CMD uwsgi --ini uwsgi.ini && service nginx start
-CMD ["sh", "-c", "uwsgi --ini uwsgi.ini & nginx -g 'daemon off;'"]
+# CMD ["sh", "-c", "uwsgi --ini uwsgi.ini & nginx -g 'daemon off;'"]

@@ -1,0 +1,340 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* 가로 슬라이드 방지 */
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #ffffff;
+    padding: 5.0rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    width: 100%; /* 화면 전체 너비에 맞춤 */
+    box-sizing: border-box;
+    position: fixed; /* 스크롤에도 고정 상태 유지 */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+    height: 12vh; /* 헤더 높이를 고정 */
+}
+
+/* 페이지 내용이 헤더와 겹치지 않도록 상단 여백 추가 */
+main {
+    margin-top: 12vh; /* 헤더 높이만큼 여백 추가 */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 8vh; /* 로고 크기를 화면 높이에 비례 */
+    max-height: 70px; /* 로고 최대 크기 제한 */
+    margin-right: 4rem;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4vw; /* 간격 조정 */
+    flex-wrap: wrap; /* 항목이 많을 때 줄 바꿈 허용 */
+    width: 70%;
+}
+
+header nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem; /* 고정된 글씨 크기 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+}
+
+header nav a:hover {
+    color: #0d47a1;
+}
+
+/* 반응형 네비게이션 */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column; /* 작은 화면에서 세로 정렬 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+        gap: 1.5rem; /* 간격 축소 */
+    }
+
+    header nav a {
+        font-size: 1.2rem; /* 작은 화면에서 글씨 크기 축소 */
+    }
+
+    .logo-container img {
+        height: 6vh; /* 작은 화면에서 로고 크기 축소 */
+        max-height: 50px; /* 최대 크기 제한 */
+    }
+}
+
+/* 메인 이미지 스타일 */
+.main-image {
+    display: block;
+    margin: 10 auto; /* 위, 아래 여백 추가 */
+    max-width: 100%;
+    height: auto;
+    margin-top: 10vh; /* 상대 단위를 사용하여 조정 */
+}
+
+/* 교보DTS 이미지 도착 위치 조정 */
+#section1 {
+    scroll-margin-top: 15vh; /* 원하는 위치로 조정 */
+}
+
+/* 추가 이미지 스타일 */
+#additional-info {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#additional-info-2 {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image-2 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#additional-info-3 {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image-3 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* '과정소개' 이미지 스타일 */
+#curriculum {
+    margin-top: 5vh;
+    text-align: center;
+    scroll-margin-top: 20vh; /* 도착 위치를 더 위로 조정 */
+}
+
+.additional-image-5 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 모집개요 이미지 스타일 */
+#additional-info-7 {
+    margin-top: 10vh;
+    text-align: center;
+    scroll-margin-top: 20vh; /* 도착 위치를 원하는 대로 조정 */
+}
+
+.additional-image-7 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 추가 이미지 스타일 6 */
+#additional-info-6 {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image-6 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#additional-info-8 {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image-8 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+#additional-info-9 {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.additional-image-9 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 추가 이미지 스타일 10 */
+#additional-info-10 {
+    margin-top: 8vh;
+    text-align: center;
+}
+
+.additional-image-10 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 추가 이미지 스타일 11 */
+#additional-info-11 {
+    margin-top: 8vh;
+    text-align: center;
+}
+
+.additional-image-11 {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 섹션 스타일 */
+main section {
+    padding: 0;
+    border-bottom: none;
+}
+
+main section h2 {
+    color: #0d47a1;
+}
+
+/* 유튜브 영상 섹션 스타일 */
+#youtube-section {
+    text-align: center;
+    margin-top: 10vh; /* 다른 섹션들과 구분을 위해 상단 여백 추가 */
+}
+
+#youtube-player-container {
+    margin: 2vh auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 2vh;
+}
+
+#youtube-video {
+    width: 100%;
+    max-width: 1000px;
+    height: 70vh; /* 상대 단위 사용 */
+    display: block;
+    margin: 0 auto;
+}
+
+/* 지원하기 버튼 스타일 */
+#apply-button-container {
+    text-align: center;
+    margin-top: 3vh; /* 영상과 버튼 사이에 간격 추가 */
+}
+
+.apply-button {
+    display: inline-block;
+    background-color: #0b3c6d; /* 버튼 배경색 */
+    color: white;
+    padding: 3vh 6vw;
+    font-size: 3vh;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-bottom: 3vh;
+    scroll-margin-top: -10vh;
+}
+
+.apply-button:hover {
+    background-color: #0b3c6d; /* 버튼 hover 효과 */
+}
+
+/* 글로벌소프트웨어캠퍼스(주) 텍스트 크기 키우기 */
+.company-name {
+    font-size: 1.3rem; /* 텍스트 크기 키우기 */
+    font-weight: bold; /* 두껍게 만들기 */
+    color: #333; /* 텍스트 색상 */
+    padding-left: 0px;
+}
+
+/* 기존 스타일 */
+#footer-content {
+    position: relative;
+    left: 2vw; 
+    text-align: left;
+    font-size: 0.8rem;
+    color: #333;
+    width: auto;
+    padding-left: 5vw;
+}
+
+/* 선 추가 */
+#footer-line {
+    width: 100%;
+    border-top: 1px solid #ddd; 
+    margin: 2vh 0;
+}
+/* 플로팅 버튼 공통 스타일 */
+.floating-button {
+    position: fixed; /* 화면에 고정 */
+    z-index: 1000; /* 다른 요소들보다 위에 위치 */
+    display: flex;
+    justify-content: center; /* 가로 정렬 */
+    align-items: center; /* 세로 정렬 */
+    cursor: pointer;
+    margin-bottom: 20px; /* 버튼들 사이의 간격 */
+}
+
+/* 첫 번째 버튼 */
+#floating-button-1 {
+    bottom: 100px; /* 화면 아래에서 100px 떨어짐 */
+    right: 50px; /* 화면 오른쪽에서 50px 떨어짐 */
+    width: 120px; /* 첫 번째 버튼 크기 */
+    height: 50px; /* 첫 번째 버튼 크기 */
+}
+
+#floating-button-1 img {
+    width: 120%; /* 버튼 크기에 맞게 이미지 크기 조정 */
+    height: 120%; /* 버튼 크기에 맞게 이미지 크기 조정 */
+    object-fit: contain; /* 이미지가 버튼에 맞게 비율 유지하며 포함됨 */
+}
+
+/* 두 번째 버튼 */
+#floating-button-2 {
+    bottom: 10px; /* 화면 아래에서 200px 떨어짐 */
+    right: 85px; /* 화면 왼쪽에서 50px 떨어짐 */
+    width: 110px; /* 두 번째 버튼 크기 */
+    height: 50px; /* 두 번째 버튼 크기 */
+}
+
+#floating-button-2 img {
+    width: 180%; /* 버튼 크기에 맞게 이미지 크기 조정 */
+    height: 180%; /* 버튼 크기에 맞게 이미지 크기 조정 */
+    object-fit: contain; /* 이미지가 버튼에 맞게 비율 유지하며 포함됨 */
+}

@@ -2,10 +2,6 @@
 FROM python:3.12-slim
 
 # 필요한 패키지를 미리 설치
-# RUN apt-get update && \
-#     apt-get upgrade -y && \
-#     apt-get install -y python3-pip pkg-config libmysqlclient-dev git nginx
-
 RUN apt-get update && apt-get install -y \
     build-essential \
     default-libmysqlclient-dev \
@@ -24,19 +20,23 @@ RUN pip3 install --upgrade pip && pip3 install -r backend/requirements.txt
 # 백엔드 서버 디렉토리로 이동
 WORKDIR /apply/backend/
 
-# uWSGI 설치
-RUN pip3 install uwsgi
+ENV DJANGO_ENV=production
+ENV PYTHONUNBUFFERED=1
 
-# uWSGI 설정 파일 복사 (로컬에서 준비된 uwsgi.ini를 컨테이너로 복사)
-COPY uwsgi.ini /apply/backend/uwsgi.ini
+# # uWSGI 설치
+# RUN pip3 install uwsgi
 
-# Nginx 설정 파일 복사 (로컬에서 준비된 nginx.conf를 복사하여 Nginx 설정)
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default /etc/nginx/sites-enabled/default
+# # uWSGI 설정 파일 복사 (로컬에서 준비된 uwsgi.ini를 컨테이너로 복사)
+# COPY uwsgi.ini /apply/backend/uwsgi.ini
 
-# Nginx 포트 오픈
-EXPOSE 80
+# # Nginx 설정 파일 복사 (로컬에서 준비된 nginx.conf를 복사하여 Nginx 설정)
+# COPY nginx.conf /etc/nginx/nginx.conf
+# COPY default /etc/nginx/sites-enabled/default
+
+# 8000 포트 오픈
+EXPOSE 8000
+
+RUN python manage.py collectstatic --noinput
 
 # uWSGI와 Nginx 시작
-# CMD uwsgi --ini uwsgi.ini && service nginx start
-CMD ["sh", "-c", "uwsgi --ini uwsgi.ini & nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py makemigrations application_form && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]

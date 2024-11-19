@@ -3,7 +3,7 @@ FROM nginx:alpine
 
 # Step 2: Copy the local files into the Nginx web root directory
 # Assuming all files are in the 'kyobo' directory
-COPY linkareer /usr/share/nginx/html
+COPY kyobo /usr/share/nginx/html
 
 # Step 3: Expose the default Nginx port
 EXPOSE 80
