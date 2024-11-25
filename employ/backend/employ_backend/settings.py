@@ -107,18 +107,30 @@ WSGI_APPLICATION = 'employ_backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'easycruit_admin',
+#         'USER': 'jjh',
+#         'PASSWORD': '123123',
+#         # 'HOST': 'localhost',
+#         # 'HOST': 'host.docker.internal',
+#         'HOST': '192.168.0.102',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'easycruit_admin',
-        'USER': 'jjh',
-        'PASSWORD': '123123',
-        # 'HOST': 'localhost',
-        # 'HOST': 'host.docker.internal',
-        'HOST': '192.168.0.102',
-        'PORT': '3306',
+        'NAME': 'easycruit_admin',  # 데이터베이스 이름
+        'USER': 'hoo',  # RDS 사용자 이름
+        'PASSWORD': 'wlgn1254410',  # RDS 사용자 비밀번호
+        'HOST': 'easycruit-mysql.cx0ieoaikrzr.ap-northeast-2.rds.amazonaws.com',  # RDS 엔드포인트
+        'PORT': '3306',  # MySQL 포트
     }
 }
+
 
 # STATIC_URL = '/static/'
 
