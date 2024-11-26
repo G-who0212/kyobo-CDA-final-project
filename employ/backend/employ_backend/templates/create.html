@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지원서 생성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'create.css' %}">
+    <script>
+        // 새로운 항목 추가하기
+        function addField() {
+            const newField = document.createElement("div");
+            newField.classList.add("form-field");
+
+            // 항목 이름을 입력할 수 있는 input 필드 생성
+            const labelInput = document.createElement("input");
+            labelInput.type = "text";
+            labelInput.placeholder = "항목을 입력하세요";  // "항목을 입력하세요" placeholder 추가
+            labelInput.classList.add("short");
+
+            // 대답을 입력할 수 있는 input 필드 생성
+            const answerInput = document.createElement("input");
+            answerInput.type = "text";
+            answerInput.classList.add("answer-input"); // 대답 입력 필드
+            answerInput.setAttribute("placeholder", "");  // placeholder 삭제
+
+            // form에 새로 만든 항목 추가
+            newField.appendChild(labelInput);
+            newField.appendChild(answerInput);
+            document.getElementById("dynamic-fields").appendChild(newField);
+        }
+
+        // "생성하기" 버튼 클릭 시 알림창 표시
+        function showConfirmation() {
+            alert("생성되었습니다.");
+        }
+
+        // Enter 키 누르면 폼 제출 방지
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 지원서 이름 필드 -->
+        <input type="text" id="form-title" value="지원서 이름" class="form-title" />
+
+        <form onsubmit="event.preventDefault(); showConfirmation();">
+            <div id="dynamic-fields">
+                <!-- 기존 항목들 -->
+                <div class="form-field">
+                    <input type="text" class="short" id="name" name="name" value="이름" />
+                    <input type="text" class="answer-input" />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" class="short" id="id" name="id" value="주민번호 앞자리" />
+                    <input type="text" class="answer-input" />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" class="short" id="phone" name="phone" value="휴대전화" />
+                    <input type="text" class="answer-input" />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" class="short" id="email" name="email" value="E-mail" />
+                    <input type="text" class="answer-input" />
+                </div>
+
+                <div class="form-field">
+                    <input type="text" class="short" id="address" name="address" value="거주지" />
+                    <input type="text" class="answer-input" />
+                </div>
+            </div>
+
+            <!-- 항목 추가 버튼 -->
+            <input type="text" id="add-field-button" value="항목 추가" onclick="addField()" readonly/>
+
+            <!-- 생성하기 버튼을 감싸는 컨테이너 -->
+            <div class="submit-button-container">
+                <button type="submit" class="submit-button">
+                    생성하기
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

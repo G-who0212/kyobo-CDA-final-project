@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easycruit - 관리자 대시보드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- 헤더 -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <span>Easy</span><span>cruit</span>
+            </div>
+            <h1 class="dashboard-title">관리자 대시보드</h1>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <!-- 지원서 보기 -->
+                <div class="dashboard-item">
+                    <div class="image-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135761.png" alt="지원서 보기">
+                    </div>
+                    <div class="card-body">
+                        <h3>지원서 보기</h3>
+                        <p>접수된 지원서를 확인하고 관리하세요.</p>
+                        <button class="btn" data-action="open-popup">열기</button>
+                    </div>
+                </div>
+
+                <!-- 지원서 생성 -->
+                <div class="dashboard-item">
+                    <div class="image-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1242/1242468.png" alt="지원서 생성">
+                    </div>
+                    <div class="card-body">
+                        <h3>지원서 생성</h3>
+                        <p>새로운 지원서를 작성하고 등록하세요.</p>
+                        <button class="btn" data-action="create-form">생성하기</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer class="dashboard-footer">
+            <p>© 2024 Easycruit</p>
+            <div class="footer-links">
+                <a href="#">도움말</a>
+                <a href="#">문의하기</a>
+                <a href="#">이용약관</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 스크립트 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 팝업 열기 버튼
+            const openButtons = document.querySelectorAll("[data-action='open-popup']");
+            openButtons.forEach(button => {
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    showPopup();
+                });
+            });
+
+            // 지원서 생성 버튼
+            const createButton = document.querySelector("[data-action='create-form']");
+            createButton.addEventListener("click", function () {
+                const accessToken = localStorage.getItem("accessToken");
+
+                if (accessToken) {
+                    window.location.href = "/create"; // /create로 이동
+                } else {
+                    alert("Access token이 없습니다. 다시 로그인해주세요.");
+                    window.location.href = "/login";
+                }
+            });
+
+            function showPopup() {
+                const popup = document.createElement("div");
+                popup.classList.add("popup-overlay");
+
+                popup.innerHTML = `
+                    <div class="popup">
+                        <h2 class="popup-title">기수를 선택하세요</h2>
+                        <ul class="popup-list">
+                            <li><button class="popup-link" data-url="/employ">[교보DTS] Cloud architecture DX Academy(CDA) 1기</button></li>
+                            <li><button class="popup-link" data-url="/employ">[교보DTS] Cloud architecture DX Academy(CDA) 2기</button></li>
+                            <li><button class="popup-link" data-url="/employ">[교보DTS] Cloud architecture DX Academy(CDA) 3기</button></li>
+                        </ul>
+                        <button class="popup-close">닫기</button>
+                    </div>
+                `;
+
+                document.body.appendChild(popup);
+
+                // 팝업 닫기 버튼
+                popup.querySelector(".popup-close").addEventListener("click", function () {
+                    popup.remove();
+                });
+
+                // 팝업 링크 클릭 이벤트
+                const links = popup.querySelectorAll(".popup-link");
+                links.forEach(link => {
+                    link.addEventListener("click", function () {
+                        const url = this.getAttribute("data-url");
+                        const accessToken = localStorage.getItem("accessToken");
+
+                        if (accessToken) {
+                            window.location.href = url;
+                        } else {
+                            alert("Access token이 없습니다. 다시 로그인해주세요.");
+                            window.location.href = "/login";
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

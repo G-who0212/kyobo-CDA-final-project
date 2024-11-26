@@ -9,6 +9,12 @@ def login(request):
 def employ(request):
     return render(request,'employ.html')
 
+def create(request):
+    return render(request,'create.html')
+
+def dashboard(request):
+    return render(request,'dashboard.html')
+
 def employdetail(request, pk):
     url = f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/{pk}/'
     # url = f'http://127.0.0.1:8000/api/applicationsall/applications/{pk}/'
