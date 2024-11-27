@@ -21,15 +21,23 @@ def send_email(applicant_name, applicant_email):
     subject = "지원서 제출이 완료되었습니다!"
     body_text = f"{applicant_name}님, 지원서가 성공적으로 제출되었습니다!"
     # body_html = f"""
-    # <html>
-    # <head></head>
-    # <body>
-    #   <h1>{applicant_name}님, 지원서가 성공적으로 제출되었습니다!</h1>
-    #   <p>지원해 주셔서 감사합니다. 아래 이미지를 확인해 주세요:</p>
-    #   <img src="https://example.com/your_image.jpg" alt="감사 이미지" />
+    # <html lang="ko">
+    # <head>
+    #     <meta charset="UTF-8">
+    #     <title>지원 확인 메일</title>
+    # </head>
+    # <body style="text-align: center;">
+    #     <h1>{applicant_name}님, 지원서가 성공적으로 제출되었습니다!</h1>
+    #     <p>지원해 주셔서 감사합니다.</p>
+    #     <div>
+    #         <img src="https://email-image-easycruit.s3.ap-northeast-2.amazonaws.com/Easycruit.png" alt="Easycruit Logo" style="width: 100px; margin: 10px 0;">
+    #         <img src="https://email-image-easycruit.s3.ap-northeast-2.amazonaws.com/kyobodtslogo.jpg" alt="Kyobo DTS Logo" style="width: 150px;">
+    #     </div>
+    #     <p>이 메일은 자동 발송된 메일입니다. 문의사항이 있으면 <a href="mailto:easycruit00@gmail.com">easycruit00@gmail.com</a>으로 연락해 주세요.</p>
     # </body>
     # </html>
     # """
+
     sender_email = "easycruit00@gmail.com"
     recipient_email = applicant_email
 
@@ -54,7 +62,8 @@ def send_email(applicant_name, applicant_email):
             }
         )
     except ClientError as e:
-        print(f"Error sending email: {e}")
+        # print(f"Error sending email: {e}")
+        pass
     else:
         print("Email sent! Message ID:", response['MessageId'])
 
