@@ -95,17 +95,17 @@ WSGI_APPLICATION = 'employ_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'countfit_admin_test',
-#         'USER': 'hoo',
-#         'PASSWORD': '1254410',
-#         'HOST': 'localhost',
-#         # 'HOST': 'host.docker.internal',
-#         'PORT': '3306',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'easycruit_admin',
+        'USER': 'hoo',
+        'PASSWORD': '1254410',
+        'HOST': 'localhost',
+        # 'HOST': 'host.docker.internal',
+        'PORT': '3306',
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -120,16 +120,16 @@ WSGI_APPLICATION = 'employ_backend.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'easycruit_admin',  # 데이터베이스 이름
-        'USER': 'hoo',  # RDS 사용자 이름
-        'PASSWORD': 'wlgn1254410',  # RDS 사용자 비밀번호
-        'HOST': 'easycruit-mysql.cx0ieoaikrzr.ap-northeast-2.rds.amazonaws.com',  # RDS 엔드포인트
-        'PORT': '3306',  # MySQL 포트
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'easycruit_admin',  # 데이터베이스 이름
+#         'USER': 'hoo',  # RDS 사용자 이름
+#         'PASSWORD': 'wlgn1254410',  # RDS 사용자 비밀번호
+#         'HOST': 'easycruit-mysql.cx0ieoaikrzr.ap-northeast-2.rds.amazonaws.com',  # RDS 엔드포인트
+#         'PORT': '3306',  # MySQL 포트
+#     }
+# }
 
 
 # STATIC_URL = '/static/'
