@@ -46,7 +46,7 @@
 ![지원자 화면](https://github.com/user-attachments/assets/44667630-f143-42d7-9d45-4cbbc017935c)
 
 ### 채용 담당자 입장  
-![채용 담당자 화면](https://github.com/user-attachments/assets/2923c192-f98c-4bd0-81f9-634cfa7e615a)
+![채용 담당자 화면](https://github.com/user-attachments/assets/03580460-26af-4974-81e4-d974256374c2)
 
 ---
 
