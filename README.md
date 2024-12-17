@@ -89,7 +89,3 @@
   ![부하 테스트 4](https://github.com/user-attachments/assets/ceeabae1-576b-412e-ac08-da9f972d9d21)  
 
 ---
-
-## 06. 프로젝트 관련 링크  
-- 프로젝트 리포지토리: [EasyCruit GitHub](#)  
-- 배포 사이트: [EasyCruit SaaS 서비스](#)  
