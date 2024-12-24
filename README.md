@@ -62,8 +62,11 @@
 
 ### K8S(EKS) 구성
 <img src="https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6" alt="프로젝트 로고" width="700"/>
-<!-- ![아키텍처 이미지 1](https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873)  
-![아키텍처 이미지 2](https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6) -->
+
+- **Namespace 분리**: **EasyCruit namespace** / **Monitoring namespace**
+- **Ingress**: 여러 서비스 트래픽을 단일 Load Balancer로 처리
+- **HPA (Horizontal Pod Autoscaling)**: 변화하는 트래픽에 유연하게 대응하기 위해 Apply Service와 Employ Service에 대하여 Autoscaling 적용
+
 
 
 ---
