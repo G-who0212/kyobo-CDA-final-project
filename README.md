@@ -45,7 +45,7 @@
 ## 03. 화면 구성  
 
 ### 지원자 입장  
-![지원자 화면](https://github.com/user-attachments/assets/35e26e22-a17e-4426-81f1-b3298508aaf2)
+![지원자 화면](https://github.com/user-attachments/assets/afaf67b8-d77e-459b-9683-099602aec955)
 
 ### 채용 담당자 입장  
 ![채용 담당자 화면](https://github.com/user-attachments/assets/185ddd15-b59f-4f75-921f-609c0e3ca5bb)
