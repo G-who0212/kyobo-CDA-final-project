@@ -1,6 +1,7 @@
 # EasyCruit - 기업 맞춤형 채용 지원 서비스
 
-![프로젝트 로고](https://github.com/user-attachments/assets/16eadf83-a8d4-464b-8fe0-fa03f0f96c6f)
+<!-- ![프로젝트 로고](https://github.com/user-attachments/assets/16eadf83-a8d4-464b-8fe0-fa03f0f96c6f) -->
+<img src="https://github.com/user-attachments/assets/16eadf83-a8d4-464b-8fe0-fa03f0f96c6f" alt="프로젝트 로고" width="300"/>
 
 ## 01. 프로젝트 정보
 
