@@ -17,16 +17,16 @@
 | **황원준** | 아키텍처 조사, UI 개발, 문서 정리              |
 
 ### 프로젝트 동기  
-1. **지원 과정 개선**: 구글폼 기반 지원서 접수는 신뢰도를 떨어뜨릴 수 있음.  
-2. **비효율성 해결**: Linkareer와 잡플래닛을 통해 접속해도 최종적으로 회사 개별 웹사이트로 이동해야 하는 번거로움 해결.  
+1. **지원 과정 개선**: 구글폼 기반 지원서 접수는 신뢰도를 떨어뜨릴 수 있음
+2. **비효율성 해결**: Linkareer와 잡플래닛을 통해 접속해도 최종적으로 회사 개별 웹사이트로 이동해야 하는 번거로움이 존재함
 
 ### 프로젝트 설명  
-- 회사가 지원서 생성, 수집, 열람을 쉽게 할 수 있도록 **SaaS 서비스** 제공.  
-- EasyCruit 서비스와 연계된 회사 개별 채용 웹사이트도 함께 제공.  
+- 회사가 지원서 생성, 수집, 열람을 쉽게 할 수 있도록 **SaaS 서비스** 제공
+- SaaS 서비스와 연계된 회사 개별 채용 웹사이트도 함께 제공
 
 ### 기대 효과  
-- **회사 측**: Linkareer, 잡플래닛과 연계된 채용 플랫폼과 개별 채용 웹사이트를 동시에 활용 가능.  
-- **지원자 측**: 여러 번 로그인할 필요 없이 다양한 회사에 손쉽게 지원 가능.  
+- **회사 측**: Linkareer, 잡플래닛과 연계된 채용 플랫폼과 개별 채용 웹사이트를 통해 지원자를 모집할 수 있음
+- **지원자 측**: 여러 번 로그인할 필요 없이 다양한 회사에 손쉽게 지원 가능
 
 ---
 
@@ -45,17 +45,17 @@
 ## 03. 화면 구성  
 
 ### 지원자 입장  
-![지원자 화면](https://github.com/user-attachments/assets/44667630-f143-42d7-9d45-4cbbc017935c)
+![지원자 화면](https://github.com/user-attachments/assets/35e26e22-a17e-4426-81f1-b3298508aaf2)
 
 ### 채용 담당자 입장  
-![채용 담당자 화면](https://github.com/user-attachments/assets/03580460-26af-4974-81e4-d974256374c2)
+![채용 담당자 화면](https://github.com/user-attachments/assets/185ddd15-b59f-4f75-921f-609c0e3ca5bb)
 
 ---
 
 ## 04. 아키텍처  
 
 ![아키텍처 이미지 1](https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873)  
-![아키텍처 이미지 2](https://github.com/user-attachments/assets/d92c5624-77bd-4760-ae94-9df5475f434f)
+![아키텍처 이미지 2](https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6)
 
 - **SaaS 서비스**: 변화하는 트래픽에 대응하기 위해 **EKS** 환경에 배포 (상시 운영).  
 - **회사 개별 지원 웹사이트**: 예측 가능한 트래픽에 따라 **ECS** 환경에 배포 (채용 기간에만 운영).  
@@ -64,7 +64,7 @@
 
 ## 05. 모니터링 및 오토스케일링 (Kubernetes HPA)  
 
-![HPA 이미지](https://github.com/user-attachments/assets/bdd62012-5d2a-4d35-ae59-727089bde689)
+![HPA 이미지](https://github.com/user-attachments/assets/15661d78-ac8a-4f3e-ae7f-03f8ca0b6714)
 
 ### Apply Service 목표  
 - **총 지원자**: 10,000명  
