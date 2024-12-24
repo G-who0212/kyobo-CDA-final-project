@@ -54,10 +54,10 @@
 ---
 
 ## 04. 아키텍처  
-# 전체 아키텍처
+### 전체 아키텍처
 <img src="https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873" alt="프로젝트 로고" width="700"/>
 
-# K8S(EKS) 구성
+### K8S(EKS) 구성
 <img src="https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6" alt="프로젝트 로고" width="700"/>
 <!-- ![아키텍처 이미지 1](https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873)  
 ![아키텍처 이미지 2](https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6) -->
