@@ -54,9 +54,10 @@
 ---
 
 ## 04. 아키텍처  
-
-![아키텍처 이미지 1](https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873)  
-![아키텍처 이미지 2](https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6)
+<img src="https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873" alt="프로젝트 로고" width="600"/>
+<img src="https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6" alt="프로젝트 로고" width="600"/>
+<!-- ![아키텍처 이미지 1](https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873)  
+![아키텍처 이미지 2](https://github.com/user-attachments/assets/c2506275-b89e-4e8f-a45c-0b87d20c1fb6) -->
 
 - **SaaS 서비스**: 변화하는 트래픽에 대응하기 위해 **EKS** 환경에 배포 (상시 운영).  
 - **회사 개별 지원 웹사이트**: 예측 가능한 트래픽에 따라 **ECS** 환경에 배포 (채용 기간에만 운영).  
