@@ -98,7 +98,7 @@
 - **Apply pod**: 1개당 **345 RPS** 수용 가능  
   ![부하 테스트 1](https://github.com/user-attachments/assets/ce7ab3f9-8999-43a0-8dda-cca52efe5d9c)  
 - **Max Replica**: 4  
-- **최대 RPS**: 1,002  
+- **Apply Service의 최대 RPS**: 1,002  
   ![부하 테스트 2](https://github.com/user-attachments/assets/014964d5-3031-43ed-a28a-b19c488230e5)  
 
 ### Employ Service 목표  
@@ -110,7 +110,7 @@
 - **Employ pod**: 1개당 **96 RPS** 수용 가능  
   ![부하 테스트 3](https://github.com/user-attachments/assets/180dc248-1373-4240-9c61-d30c4b537a6e)  
 - **Max Replica**: 4  
-- **최대 RPS**: 440  
+- **Employ Service의 최대 RPS**: 440  
   ![부하 테스트 4](https://github.com/user-attachments/assets/ceeabae1-576b-412e-ac08-da9f972d9d21)  
 
 ---
