@@ -87,7 +87,7 @@
 
 ## 05. 모니터링 및 오토스케일링 (Kubernetes HPA)  
 
-![HPA 이미지](https://github.com/user-attachments/assets/15661d78-ac8a-4f3e-ae7f-03f8ca0b6714)
+![HPA 이미지](https://github.com/user-attachments/assets/f6cb1514-7172-44e4-9737-f4088a2f04d4)
 
 ### Apply Service 목표  
 - **총 지원자**: 10,000명  
@@ -102,12 +102,12 @@
   ![부하 테스트 2](https://github.com/user-attachments/assets/014964d5-3031-43ed-a28a-b19c488230e5)  
 
 ### Employ Service 목표  
-- **총 담당자**: 4,000명  
+- **총 채용담당자**: 3,000명  
 - **동시 접속자 비율**: 10%  
-- **목표 RPS**: 400  
+- **목표 RPS**: 300  
 
 **부하 테스트 결과**:  
-- **Employ pod**: 1개당 **113 RPS** 수용 가능  
+- **Employ pod**: 1개당 **96 RPS** 수용 가능  
   ![부하 테스트 3](https://github.com/user-attachments/assets/180dc248-1373-4240-9c61-d30c4b537a6e)  
 - **Max Replica**: 4  
 - **최대 RPS**: 440  
