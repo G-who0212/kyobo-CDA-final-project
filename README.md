@@ -95,7 +95,7 @@
 - **목표 RPS**: 1,000  
 
 **부하 테스트 결과**:  
-- **Apply pod**: 1개당 **326 RPS** 수용 가능  
+- **Apply pod**: 1개당 **345 RPS** 수용 가능  
   ![부하 테스트 1](https://github.com/user-attachments/assets/ce7ab3f9-8999-43a0-8dda-cca52efe5d9c)  
 - **Max Replica**: 4  
 - **최대 RPS**: 1,002  
