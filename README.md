@@ -87,7 +87,7 @@
 
 ## 05. 모니터링 및 오토스케일링 (Kubernetes HPA)  
 
-![HPA 이미지](https://github.com/user-attachments/assets/8135625e-c2bb-40e6-947b-4a304928ed14)
+![HPA 이미지](https://github.com/user-attachments/assets/36a9b1ea-337d-444d-84b9-3e0691c0bcbd)
 
 ### Apply Service 목표  
 - **총 지원자**: 10,000명  
