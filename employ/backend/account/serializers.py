@@ -68,13 +68,3 @@ class ApplicationPartialSerializer(serializers.Serializer):
     submitted_at = serializers.DateField()
     phone_num = serializers.CharField(max_length=15)
     date_of_birth = serializers.CharField(max_length=6)
-
-# class ApplicationSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = views.Application
-#         fields = '__all__'
-
-# class ApplicationPartialSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = views.Application
-#         fields = ('name', 'submitted_at', 'phone_num', 'date_of_birth')

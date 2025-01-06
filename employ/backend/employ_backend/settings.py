@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import sys
 import os
+from mongoengine import connect
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -106,6 +107,12 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+connect(
+    db="easycruit_db",  # MongoDB 데이터베이스 이름
+    host="localhost",
+    port=27017
+)
 
 # DATABASES = {
 #     'default': {

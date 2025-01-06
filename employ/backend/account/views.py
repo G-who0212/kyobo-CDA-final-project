@@ -80,8 +80,8 @@ class ApplicantListAPIView(APIView):
         user = request.user
         # apply 서비스의 API 호출
         # print(f"user company {user.company}")
-        response = requests.get(f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/?applying_to={user.company}')
-        # response = requests.get(f'http://127.0.0.1:8000/api/applicationsall/applications/?applying_to={user.company}')
+        # response = requests.get(f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/?applying_to={user.company}')
+        response = requests.get(f'http://127.0.0.1:8000/api/applicationsall/applications/?applying_to={user.company}')
         
         if response.status_code == 200:
             data = response.json()
@@ -110,8 +110,8 @@ class ApplicantDetailAPIView(APIView):
     def get(self, request, pk):
         user = request.user
         # 특정 지원자의 정보를 apply 서비스에서 가져옴
-        response = requests.get(f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/{pk}/')
-        # response = requests.get(f'http://127.0.0.1:8000/api/applicationsall/applications/{pk}/')
+        # response = requests.get(f'http://apply-service.default.svc.cluster.local:80/api/applicationsall/applications/{pk}/')
+        response = requests.get(f'http://127.0.0.1:8000/api/applicationsall/applications/{pk}/')
         
         if response.status_code == 200:
             data = response.json()
