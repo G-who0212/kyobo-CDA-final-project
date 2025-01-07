@@ -2,11 +2,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import ApplicationForm, Company, Application
+from .utils import get_company_from_token
 
 # 회사 담당자가 지원서 양식을 생성하는 API
 class ApplicationFormView(APIView):
     def post(self, request):
-        company_name = request.data.get("company_name")
+        company_name = get_company_from_token(request)
         department = request.data.get("department")
         form_schema = request.data.get("form_schema")
 
@@ -112,10 +113,7 @@ class ApplicationView(APIView):
 
 class DepartmentListView(APIView):
     def get(self, request):
-        company_name = request.query_params.get("company_name")
-
-        if not company_name:
-            return Response({"error": "Company name is required."}, status=status.HTTP_400_BAD_REQUEST)
+        company_name = get_company_from_token(request)
 
         try:
             company = Company.objects.get(company_name=company_name)
@@ -127,7 +125,7 @@ class DepartmentListView(APIView):
 
 class DepartmentApplicantsView(APIView):
     def get(self, request):
-        company_name = request.query_params.get("company_name")
+        company_name = get_company_from_token(request)
         department = request.query_params.get("department")
         if not company_name or not department:
             return Response({"error": "Company name and department are required."}, status=status.HTTP_400_BAD_REQUEST)
