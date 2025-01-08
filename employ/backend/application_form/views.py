@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import ApplicationForm, Company, Application
 from .utils import get_company_from_token
+from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 # 회사 담당자가 지원서 양식을 생성하는 API
 class ApplicationFormView(APIView):
@@ -87,28 +89,29 @@ class ApplicationView(APIView):
 
         return Response({"message": "Application submitted successfully!"}, status=status.HTTP_201_CREATED)
 
-    # GET 방식: 특정 지원서 조회
+    # GET 방식: 특정 지원서 조회 -> 이거 고쳐야함.
     def get(self, request):
-        form_id = request.query_params.get("form_id")
+        applicantid = request.query_params.get("applicantid")
 
-        if not form_id:
-            return Response({"error": "Form ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+        if not applicantid:
+            return Response({"error": "applicantid is required."}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            form = ApplicationForm.objects.get(id=form_id)
-            applications = Application.objects.filter(form=form)
-            application_list = [
-                {
-                    "id": str(application.id),
+            application = Application.objects.get(id=applicantid)
+
+            # JSON 데이터로 반환
+            return Response({
+                "application": {
                     "applicant_name": application.applicant_name,
                     "application_data": application.application_data,
-                    "created_at": application.created_at
+                    "created_at": application.created_at.isoformat(),
                 }
-                for application in applications
-            ]
-            return Response({"applications": application_list}, status=status.HTTP_200_OK)
-        except ApplicationForm.DoesNotExist:
-            return Response({"error": "Form not found."}, status=status.HTTP_404_NOT_FOUND)
+            }, status=status.HTTP_200_OK)
+
+        except Application.DoesNotExist:
+            return Response({"error": "Application not found."}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 
 class DepartmentListView(APIView):

@@ -4,90 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지원서 생성</title>
+    <title>지원서 양식 생성</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'create.css' %}">
-    <script>
-        // 새로운 항목 추가하기
-        function addField() {
-            const newField = document.createElement("div");
-            newField.classList.add("form-field");
-
-            // 항목 이름을 입력할 수 있는 input 필드 생성
-            const labelInput = document.createElement("input");
-            labelInput.type = "text";
-            labelInput.placeholder = "항목을 입력하세요";  // "항목을 입력하세요" placeholder 추가
-            labelInput.classList.add("short");
-
-            // 대답을 입력할 수 있는 input 필드 생성
-            const answerInput = document.createElement("input");
-            answerInput.type = "text";
-            answerInput.classList.add("answer-input"); // 대답 입력 필드
-            answerInput.setAttribute("placeholder", "");  // placeholder 삭제
-
-            // form에 새로 만든 항목 추가
-            newField.appendChild(labelInput);
-            newField.appendChild(answerInput);
-            document.getElementById("dynamic-fields").appendChild(newField);
-        }
-
-        // "생성하기" 버튼 클릭 시 알림창 표시
-        function showConfirmation() {
-            alert("생성되었습니다.");
-        }
-
-        // Enter 키 누르면 폼 제출 방지
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-            }
-        });
-    </script>
 </head>
 <body>
     <div class="container">
-        <!-- 지원서 이름 필드 -->
-        <input type="text" id="form-title" value="지원서 이름" class="form-title" />
+        <!-- 지원서 질문 입력 폼 -->
+        <h1>지원서 양식 생성</h1>
 
-        <form onsubmit="event.preventDefault(); showConfirmation();">
-            <div id="dynamic-fields">
-                <!-- 기존 항목들 -->
-                <div class="form-field">
-                    <input type="text" class="short" id="name" name="name" value="이름" />
-                    <input type="text" class="answer-input" />
-                </div>
+        <!-- 부서 입력 필드 -->
+        <div class="department-field">
+            <label for="department">부서</label>
+            <input type="text" id="department" placeholder="부서를 입력하세요" required>
+        </div>
 
-                <div class="form-field">
-                    <input type="text" class="short" id="id" name="id" value="주민번호 앞자리" />
-                    <input type="text" class="answer-input" />
-                </div>
-
-                <div class="form-field">
-                    <input type="text" class="short" id="phone" name="phone" value="휴대전화" />
-                    <input type="text" class="answer-input" />
-                </div>
-
-                <div class="form-field">
-                    <input type="text" class="short" id="email" name="email" value="E-mail" />
-                    <input type="text" class="answer-input" />
-                </div>
-
-                <div class="form-field">
-                    <input type="text" class="short" id="address" name="address" value="거주지" />
-                    <input type="text" class="answer-input" />
-                </div>
+        <!-- 기본 질문 항목 -->
+        <div id="static-fields">
+            <div class="static-field">
+                <div class="field-label">이름</div>
+                <div class="field-type">text</div>
             </div>
+            <div class="static-field">
+                <div class="field-label">주민번호 앞자리</div>
+                <div class="field-type">text</div>
+            </div>
+            <div class="static-field">
+                <div class="field-label">휴대전화</div>
+                <div class="field-type">text</div>
+            </div>
+            <div class="static-field">
+                <div class="field-label">E-mail</div>
+                <div class="field-type">text</div>
+            </div>
+            <div class="static-field">
+                <div class="field-label">거주지</div>
+                <div class="field-type">text</div>
+            </div>
+        </div>
+
+        <!-- 동적으로 추가될 질문 항목 -->
+        <form id="application-form">
+            <div id="dynamic-fields"></div>
 
             <!-- 항목 추가 버튼 -->
-            <input type="text" id="add-field-button" value="항목 추가" onclick="addField()" readonly/>
+            <button type="button" id="add-field-button">항목 추가</button>
 
-            <!-- 생성하기 버튼을 감싸는 컨테이너 -->
+            <!-- 생성하기 버튼 -->
             <div class="submit-button-container">
-                <button type="submit" class="submit-button">
-                    생성하기
-                </button>
+                <button type="submit" class="submit-button">생성하기</button>
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 기본 질문 항목
+            const staticFields = [
+                { name: 'name', type: 'text', label: '이름', required: true },
+                { name: 'resident_number', type: 'text', label: '주민번호 앞자리', required: true },
+                { name: 'phone_number', type: 'text', label: '휴대전화', required: true },
+                { name: 'email', type: 'text', label: 'E-mail', required: true },
+                { name: 'address', type: 'text', label: '거주지', required: true }
+            ];
+
+            // 항목 추가 버튼 클릭 시 새로운 질문 필드 추가
+            document.getElementById('add-field-button').addEventListener('click', function () {
+                const fieldContainer = document.createElement('div');
+                fieldContainer.classList.add('form-field');
+
+                fieldContainer.innerHTML = `
+                    <input type="text" placeholder="질문 항목 이름" class="short" required />
+                    <select class="short" required>
+                        <option value="text">텍스트</option>
+                        <option value="number">숫자</option>
+                        <option value="file">파일 업로드</option>
+                    </select>
+                `;
+
+                document.getElementById('dynamic-fields').appendChild(fieldContainer);
+            });
+
+            // 폼 제출 시 API 호출
+            document.getElementById('application-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const token = localStorage.getItem('accessToken');
+                if (!token) {
+                    alert('로그인이 필요합니다.');
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const department = document.getElementById('department').value;
+                if (!department) {
+                    alert('부서를 입력하세요.');
+                    return;
+                }
+
+                // 기본 질문 항목 추가
+                const fields = [...staticFields];
+
+                // 추가된 질문 항목 수집
+                document.querySelectorAll('#dynamic-fields .form-field').forEach(field => {
+                    const name = field.querySelector('input').value;
+                    const type = field.querySelector('select').value;
+
+                    fields.push({ name, type, label: name, required: true });
+                });
+
+                // API 요청 본문 생성
+                const requestBody = {
+                    department: department,
+                    form_schema: { fields: fields }
+                };
+
+                // API 호출
+                fetch('/application_form/forms/', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || '지원서가 성공적으로 생성되었습니다.');
+                    window.location.href = '/dashboard';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('지원서 생성에 실패했습니다. 다시 시도해주세요.');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

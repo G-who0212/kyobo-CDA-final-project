@@ -13,6 +13,6 @@ urlpatterns = [
     path('employ/', views.employ, name='employ'),
     path('dashboard/', views.dashboard, name='dashboard'), 
     path('create/', views.create, name='create'), 
-    path('employdetail/<int:pk>', views.employdetail, name='employdetail'),
+    path('employdetail/', views.employdetail, name='employdetail'),
     path('', include('django_prometheus.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

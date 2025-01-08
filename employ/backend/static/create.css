@@ -1,3 +1,4 @@
+/* 기본 스타일 초기화 */
 * {
     margin: 0;
     padding: 0;
@@ -15,8 +16,9 @@ html, body {
     min-height: 100vh;
 }
 
+/* 컨테이너 스타일 */
 .container {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
     margin: 0 auto;
     background: white;
@@ -25,75 +27,92 @@ html, body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* 제목 스타일 */
 h1 {
     text-align: center;
     margin-bottom: 20px;
-}
-
-/* 지원서 이름 필드 스타일 */
-#form-title {
     font-size: 2.5rem;
     font-weight: bold;
     color: #333;
-    text-align: center;
-    width: 100%;
-    padding: 14px;
+}
+
+/* 부서 입력 필드 스타일 */
+.department-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.department-field label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0d47a1;
+    margin-bottom: 10px;
+}
+
+.department-field input {
+    padding: 12px;
+    font-size: 1.2rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    color: #333;
-    box-shadow: none;
+    background-color: #f9f9f9;
 }
 
-/* 항목 입력 필드 스타일 */
-.form-field {
+/* 기본 질문 항목 스타일 */
+#static-fields {
     margin-bottom: 20px;
 }
 
-input[type="text"] {
+.static-field {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+}
+
+.static-field .field-label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+.static-field .field-type {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 새 항목 추가 필드 스타일 */
+#dynamic-fields .form-field {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#dynamic-fields input {
+    flex-grow: 1;
     padding: 12px;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: 10px;
     background-color: #f9f9f9;
-    transition: all 0.3s ease-in-out;
-    box-sizing: border-box;
-    width: 100%; /* 기본 너비 */
+    margin-right: 10px;
 }
 
-/* 항목 입력 필드 크기 줄이기 (35%로 변경하고 색상 진하게) */
-.form-field input[type="text"].short {
-    width: 35%; /* 항목 입력 필드 너비 35%로 설정 */
-    padding: 8px;
-    font-size: 0.9rem;
-    background-color: #81c784; /* 진한 연두색 배경 */
-}
-
-/* 대답 입력 필드 크기 유지 */
-.form-field input[type="text"].answer-input {
-    width: 100%; /* 대답 필드는 원래 크기 유지 */
-    padding: 14px;
+#dynamic-fields select {
+    width: 150px;
+    padding: 12px;
     font-size: 1rem;
-    background-color: #ffffff;
-}
-
-/* 항목 이름 텍스트 가운데 정렬 */
-.form-field input[type="text"] {
-    text-align: center; /* 텍스트 가운데 정렬 */
-}
-
-/* 입력 필드에 포커스 시 스타일 */
-input:focus {
-    border-color: #3a8de7; /* Blue color */
-    background-color: #ffffff;
-    box-shadow: 0 0 8px rgba(58, 141, 231, 0.3);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 /* 항목 추가 버튼 스타일 */
 #add-field-button {
-    background-color: #4caf50; /* Green color */
+    background-color: #4caf50;
     border: none;
     color: white;
     cursor: pointer;
@@ -101,43 +120,34 @@ input:focus {
     font-size: 1.1rem;
     border-radius: 8px;
     margin-top: 20px;
-    width: 100%; /* 버튼 크기 전체로 확장 */
+    width: 100%;
     text-align: center;
 }
 
-#add-field-button:focus {
-    outline: none;
-}
-
 #add-field-button:hover {
-    background-color: #45a049; /* Darker green */
+    background-color: #45a049;
 }
 
 /* 생성하기 버튼 스타일 */
 .submit-button-container {
     display: flex;
-    justify-content: flex-end; /* 오른쪽 정렬 */
+    justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
-    width: 100%; /* 부모 요소가 페이지 전체 너비를 차지하도록 설정 */
 }
 
 .submit-button {
-    background-color: #1a237e; /* Dark blue color */
+    background-color: #1a237e;
     color: white;
     padding: 12px 25px;
     font-size: 1.1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    width: auto; /* 버튼의 크기는 적당히 설정 */
     font-weight: bold;
-    margin-bottom: 10px; /* 버튼 아래에 약간의 여백 추가 */
+    margin-bottom: 10px;
 }
 
 .submit-button:hover {
-    background-color: #0d1b5e; /* Darker blue */
+    background-color: #0d1b5e;
 }
-

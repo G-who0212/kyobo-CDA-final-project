@@ -9,57 +9,38 @@
 </head>
 <body>
     <div class="container">
+        <!-- 로고 -->
         <div class="logo">Easy<span>cruit</span></div>
+
+        <!-- 프로그램 정보 -->
         <div class="header">
-            <h1>[교보DTS] Cloud architecture DX Academy(CDA)</h1>
-            <h2>참가신청서</h2>
+            <h1 id="applying_to">프로그램 이름</h1>
+            <h2 id="department" style="display: none;"></h2>
+            <h3>참가신청서</h3>
         </div>
 
-        <div class="info-section">
-            개인정보처리 방침에 대한 동의<br>
-            아래 링크 내용을 자세히 읽어보시고 모든 내용을 숙지하신 후에 개인정보처리방침에 동의 여부를 결정해 주시길 바랍니다.<br>
-            *링크 : <a href="#">[교보DTS 개인정보처리방침]</a>
-        </div>
-
-        <!-- 항목 1 -->
+        <!-- 개인정보 동의 항목들 -->
         <div class="agreement-section">
             <div class="agreement-title">1. 개인정보 제공 및 사용에 대한 동의</div>
             <div class="agreement-item">
-                <label>
-                    <input type="radio" name="agreement1" value="agree" required> 동의합니다.
-                </label>
-                <br>
-                <label>
-                    <input type="radio" name="agreement1" value="disagree"> 동의하지 않습니다.
-                </label>
+                <label><input type="radio" name="agreement1" value="agree" required> 동의합니다.</label><br>
+                <label><input type="radio" name="agreement1" value="disagree"> 동의하지 않습니다.</label>
             </div>
         </div>
 
-        <!-- 항목 2 -->
         <div class="agreement-section">
             <div class="agreement-title">2. 민감정보의 제공 및 사용에 관한 동의</div>
             <div class="agreement-item">
-                <label>
-                    <input type="radio" name="agreement2" value="agree" required> 동의합니다.
-                </label>
-                <br>
-                <label>
-                    <input type="radio" name="agreement2" value="disagree"> 동의하지 않습니다.
-                </label>
+                <label><input type="radio" name="agreement2" value="agree" required> 동의합니다.</label><br>
+                <label><input type="radio" name="agreement2" value="disagree"> 동의하지 않습니다.</label>
             </div>
         </div>
 
-        <!-- 항목 3 -->
         <div class="agreement-section">
             <div class="agreement-title">3. 제3자 정보제공 위탁에 대한 동의</div>
             <div class="agreement-item">
-                <label>
-                    <input type="radio" name="agreement3" value="agree" required> 동의합니다.
-                </label>
-                <br>
-                <label>
-                    <input type="radio" name="agreement3" value="disagree"> 동의하지 않습니다.
-                </label>
+                <label><input type="radio" name="agreement3" value="agree" required> 동의합니다.</label><br>
+                <label><input type="radio" name="agreement3" value="disagree"> 동의하지 않습니다.</label>
             </div>
         </div>
 
@@ -79,18 +60,38 @@
         <button class="submit-button" onclick="validateForm()">제출 [ 1 / 2 ]</button>
     </div>
 
+    <!-- JavaScript -->
     <script>
+        // URL 파라미터 가져오기 함수
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // 프로그램 이름과 부서 설정
+        const applyingTo = getQueryParam('applying_to');
+        const department = getQueryParam('department');
+
+        // 필수 파라미터 검증
+        if (!applyingTo || !department) {
+            alert("필수 파라미터가 누락되었습니다. 프로그램 이름과 부서를 확인해 주세요.");
+            document.body.innerHTML = ""; // 페이지 내용을 모두 비움
+        } else {
+            // 프로그램 이름과 부서 정보 설정
+            document.getElementById('applying_to').textContent = applyingTo;
+            document.getElementById('department').textContent = department;
+            document.getElementById('department').style.display = 'block';
+        }
+
+        // 개인정보 동의 검증 및 apply.html로 리다이렉트
         function validateForm() {
-            // 동의 항목 확인
             const agreement1 = document.querySelector('input[name="agreement1"]:checked');
             const agreement2 = document.querySelector('input[name="agreement2"]:checked');
             const agreement3 = document.querySelector('input[name="agreement3"]:checked');
-
-            // 이름 및 서명 확인
             const name = document.getElementById("final_name").value.trim();
             const signature = document.getElementById("final_signature").value.trim();
 
-            // 각 조건을 순차적으로 확인하고, 충족하지 못하면 alert 메시지를 표시하고 종료
+            // 동의 항목 검증
             if (!agreement1 || agreement1.value !== "agree") {
                 alert("개인정보 제공 및 사용에 대한 동의를 선택해 주세요.");
                 return;
@@ -112,8 +113,8 @@
                 return;
             }
 
-            // 모든 조건을 충족하면 apply.html로 이동
-            window.location.href = "/apply";
+            // 모든 조건을 만족하면 apply.html로 이동하며 URL 파라미터 전달
+            window.location.href = `/apply?applying_to=${encodeURIComponent(applyingTo)}&department=${encodeURIComponent(department)}`;
         }
     </script>
 </body>
