@@ -148,47 +148,6 @@
                     alert('부서 목록을 가져오는 데 실패했습니다.');
                 });
             }
-
-
-            // function showPopup() {
-            //     const popup = document.createElement("div");
-            //     popup.classList.add("popup-overlay");
-
-            //     popup.innerHTML = `
-            //         <div class="popup">
-            //             <h2 class="popup-title">기수를 선택하세요</h2>
-            //             <ul class="popup-list">
-            //                 <li><button class="popup-link" data-url="/employ">CDA 1기</button></li>
-            //                 <li><button class="popup-link" data-url="/employ">CDA 2기</button></li>
-            //                 <li><button class="popup-link" data-url="/employ">CDA 3기</button></li>
-            //             </ul>
-            //             <button class="popup-close">닫기</button>
-            //         </div>
-            //     `;
-
-            //     document.body.appendChild(popup);
-
-            //     // 팝업 닫기 버튼
-            //     popup.querySelector(".popup-close").addEventListener("click", function () {
-            //         popup.remove();
-            //     });
-
-            //     // 팝업 링크 클릭 이벤트
-            //     const links = popup.querySelectorAll(".popup-link");
-            //     links.forEach(link => {
-            //         link.addEventListener("click", function () {
-            //             const url = this.getAttribute("data-url");
-            //             const accessToken = localStorage.getItem("accessToken");
-
-            //             if (accessToken) {
-            //                 window.location.href = url;
-            //             } else {
-            //                 alert("Access token이 없습니다. 다시 로그인해주세요.");
-            //                 window.location.href = "/login";
-            //             }
-            //         });
-            //     });
-            // }
         });
     </script>
 </body>

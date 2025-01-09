@@ -28,7 +28,6 @@
     </div>
 
     <script>
-  
         function getCookie(name) {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -43,24 +42,6 @@
             }
             return cookieValue;
         };
-        // console.log("CSRF Token:", getCookie('csrftoken'));
-
-        // function getCookie(name) {
-        //     let cookieValue = null;
-        //     if (document.cookie && document.cookie !== '') {
-        //         const cookies = document.cookie.split(';');
-        //         for (let i = 0; i < cookies.length; i++) {
-        //             const cookie = cookies[i].trim();
-        //             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     return cookieValue;
-        // }
-
-        // console.log("CSRF Token:", getCookie('csrftoken'));
 
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault(); // 기본 제출 이벤트 방지
@@ -110,51 +91,6 @@
                 alert('서버에 연결할 수 없습니다. 나중에 다시 시도해 주세요.');
             });
         });
-
-        // document.getElementById('login-form').addEventListener('submit', function(event) {
-        //     event.preventDefault(); // 기본 제출 이벤트 방지
-
-        //     // 각 필드의 값을 가져와 JSON 객체 생성
-        //     const formData = {
-        //         email: document.getElementById('email').value,
-        //         password: document.getElementById('password').value,
-        //     };
-
-        //     // Fetch API를 사용하여 POST 요청 보내기
-        //     fetch('/account/signin/', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-CSRFToken': getCookie('csrftoken'), // CSRF 토큰 추가
-        //         },
-        //         body: JSON.stringify(formData)
-        //     })
-        //     .then(response => {
-        //         // 응답이 성공적인지 확인
-        //         if (!response.ok) {
-        //             throw new Error("Network response was not ok");
-        //         }
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         // 데이터가 올바르게 받아졌는지 확인
-        //         // console.log('Received data:', data);
-        //         if (data.token.access && data.token.refresh) {
-        //             // JWT 액세스 토큰과 리프레시 토큰을 로컬 스토리지에 저장
-        //             localStorage.setItem('accessToken', data.token.accessToken);
-        //             localStorage.setItem('refreshToken', data.token.refreshToken);
-                    
-        //             window.location.href = "/employ";  // 로그인 후 이동할 페이지로 리다이렉트
-        //         } else {
-        //             alert('로그인 실패: 잘못된 자격 증명');
-        //         }
-        //     })
-        //     .catch(error => {
-        //         // 네트워크 또는 서버 오류 처리
-        //         console.error('Error:', error);
-        //         alert('서버에 연결할 수 없습니다. 나중에 다시 시도해 주세요.');
-        //     });
-        // });
     </script>
 </body>
 </html>

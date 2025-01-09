@@ -51,6 +51,7 @@ class UserLoginAPIView(APIView):
             )
         return Response(token_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class UserAPIView(APIView):
     permission_classes = [IsAuthenticated]  # 인증된 사용자만 접근 가능
 
@@ -103,6 +104,7 @@ class ApplicantListAPIView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         return Response({'error': 'Failed to fetch applications'}, status=response.status_code)
+
 
 class ApplicantDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]

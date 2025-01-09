@@ -35,8 +35,6 @@ class ApplicationFormView(APIView):
 # 지원자가 지원서를 제출하는 API
 class ApplicationSubmissionView(APIView):
     def post(self, request):
-        # print("Incoming data:", request.data)
-
         form_id = request.data.get("form_id")
         applicant_name = request.data.get("applicant_name")
         application_data = request.data.get("application_data")

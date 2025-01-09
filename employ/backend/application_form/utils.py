@@ -1,12 +1,9 @@
 import jwt
 from django.conf import settings
 from rest_framework.exceptions import AuthenticationFailed
-from account.models import User  # User 모델을 import합니다.
+from account.models import User
 
 def get_company_from_token(request):
-    """
-    JWT 토큰에서 회사 이름을 추출하는 유틸리티 함수.
-    """
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         raise AuthenticationFailed('토큰이 필요합니다.')
@@ -24,11 +21,9 @@ def get_company_from_token(request):
     if not user_id:
         raise AuthenticationFailed('유효한 사용자 정보가 없습니다.')
 
-    # ✅ DB에서 사용자 정보 조회
     try:
         user = User.objects.get(id=user_id)
     except User.DoesNotExist:
         raise AuthenticationFailed('사용자를 찾을 수 없습니다.')
 
-    # ✅ 회사 이름 반환
     return user.company

@@ -7,7 +7,7 @@ class Company(Document):
 
     def __str__(self):
         return self.company_name
-    
+
 # 부서별 지원서 양식 모델
 class ApplicationForm(Document):
     company = ReferenceField('Company', required=True)  # 회사와 연결
@@ -16,7 +16,7 @@ class ApplicationForm(Document):
 
     def __str__(self):
         return f"{self.company.company_name} - {self.department}"
-    
+
 # 지원서 데이터 모델
 class Application(Document):
     form = ReferenceField('ApplicationForm', required=True)  # 부서별 양식과 연결
