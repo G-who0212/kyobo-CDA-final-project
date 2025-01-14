@@ -69,7 +69,7 @@
 
 ## 04. 아키텍처  
 ### 전체 아키텍처
-<img src="https://github.com/user-attachments/assets/3ead5f9c-c9ff-43d3-8fd2-f9bbdff36873" alt="프로젝트 로고" width="700"/>
+<img src="https://github.com/user-attachments/assets/74cae740-f70c-4e40-bcb8-76eece6d440b" alt="프로젝트 로고" width="800"/>
 
 - **SaaS 서비스**: 변화하는 트래픽에 대응하기 위해 **EKS** 환경에 배포 (상시 운영).  
 - **회사 개별 지원 웹사이트**: 예측 가능한 트래픽에 따라 **ECS** 환경에 배포 (채용 기간에만 운영).  
